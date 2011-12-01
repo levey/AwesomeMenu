@@ -3,7 +3,7 @@
 //  AwesomeMenu
 //
 //  Created by Levey on 11/30/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 lunaapp.com. All rights reserved.
 //
 
 #import "QuadCurveMenu.h"
@@ -53,10 +53,10 @@
         }
         
         // add the "Add" Button.
-        _addButton = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"story-add-button.png"]
-                                       highlightedImage:[UIImage imageNamed:@"story-add-button-pressed.png"] 
-                                           ContentImage:[UIImage imageNamed:@"story-add-plus.png"] 
-                                highlightedContentImage:[UIImage imageNamed:@"story-add-plus-pressed.png"]];
+        _addButton = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
+                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"] 
+                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
+                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
         _addButton.delegate = self;
         _addButton.center = STARTPOINT;
         [self addSubview:_addButton];
