@@ -3,7 +3,7 @@
 //  AwesomeMenu
 //
 //  Created by Levey on 11/30/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 lunaapp.com. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -25,38 +25,38 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     
-    UIImage *storyMenuItemImage = [UIImage imageNamed:@"story-button.png"];
-    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"story-button-pressed.png"];
+    UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
+    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
     
     // Camera MenuItem.
     QuadCurveMenuItem *cameraMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                       highlightedImage:storyMenuItemImagePressed 
-                                          ContentImage:[UIImage imageNamed:@"story-camera.png"] 
+                                          ContentImage:[UIImage imageNamed:@"icon-star.png"] 
                                highlightedContentImage:nil];   
     // People MenuItem.
     QuadCurveMenuItem *peopleMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                       highlightedImage:storyMenuItemImagePressed 
-                                          ContentImage:[UIImage imageNamed:@"story-people.png"] 
+                                          ContentImage:[UIImage imageNamed:@"icon-star.png"] 
                                highlightedContentImage:nil];    
     // Place MenuItem.
     QuadCurveMenuItem *placeMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                      highlightedImage:storyMenuItemImagePressed 
-                                         ContentImage:[UIImage imageNamed:@"story-place.png"] 
+                                         ContentImage:[UIImage imageNamed:@"icon-star.png"] 
                               highlightedContentImage:nil];    
     // Music MenuItem.
     QuadCurveMenuItem *musicMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                      highlightedImage:storyMenuItemImagePressed 
-                                         ContentImage:[UIImage imageNamed:@"story-music.png"] 
+                                         ContentImage:[UIImage imageNamed:@"icon-star.png"] 
                               highlightedContentImage:nil];    
     // Thought MenuItem.
     QuadCurveMenuItem *thoughtMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                        highlightedImage:storyMenuItemImagePressed 
-                                           ContentImage:[UIImage imageNamed:@"story-thought.png"] 
+                                           ContentImage:[UIImage imageNamed:@"icon-star.png"] 
                                 highlightedContentImage:nil];   
     // Sleep MenuItem.
     QuadCurveMenuItem *sleepMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                      highlightedImage:storyMenuItemImagePressed 
-                                         ContentImage:[UIImage imageNamed:@"story-sleep.png"] 
+                                         ContentImage:[UIImage imageNamed:@"icon-star.png"] 
                               highlightedContentImage:nil];
     
     NSArray *menus = [NSArray arrayWithObjects:cameraMenuItem, peopleMenuItem, placeMenuItem, musicMenuItem, thoughtMenuItem, sleepMenuItem, nil];
