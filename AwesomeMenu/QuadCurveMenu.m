@@ -35,22 +35,9 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        _menusArray = [aMenusArray copy];
-        
         // add the menu buttons
-        int count = [_menusArray count];
-        for (int i = 0; i < count; i ++)
-        {
-            QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
-            item.tag = 1000 + i;
-            item.startPoint = STARTPOINT;
-            item.endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - ENDRADIUS * cosf(i * M_PI_2 / (count - 1)));
-            item.nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - NEARRADIUS * cosf(i * M_PI_2 / (count - 1)));
-            item.farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - FARRADIUS * cosf(i * M_PI_2 / (count - 1)));
-            item.center = item.startPoint;
-            item.delegate = self;
-            [self addSubview:item];
-        }
+        [self setMenusArray:aMenusArray];
+
         
         // add the "Add" Button.
         _addButton = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
