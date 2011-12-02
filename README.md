@@ -20,6 +20,8 @@ In QuadCurveMenu.m
 
 Twitter: [@LeveyZhu](https://twitter.com/#!/LeveyZhu) 
 
+Sina Weibo: [@SORA-Levey](http://weibo.com/leveyzhu) 
+
 Enjoy to use it:) 
 
 Thanks for [pashields](https://github.com/pashields) providing the [youtube demo](http://www.youtube.com/watch?v=vddaYMtETjo) :)
