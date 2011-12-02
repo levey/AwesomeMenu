@@ -4,6 +4,6 @@ Twitter: [@LeveyZhu](https://twitter.com/#!/LeveyZhu)
 
 Enjoy to use it:) 
 
-thx for [pashields](https://github.com/pashields) providing the youtube demo :)
+Thanks for [pashields](https://github.com/pashields) providing the [youtube demo](http://www.youtube.com/watch?v=vddaYMtETjo) :)
 
-![screenshots](http://lunaapp.com/images/external/qcmenu2.gif) or  <iframe width="420" height="315" src="http://www.youtube.com/embed/vddaYMtETjo" frameborder="0" allowfullscreen></iframe> 
+![screenshots](http://lunaapp.com/images/external/qcmenu2.gif)
