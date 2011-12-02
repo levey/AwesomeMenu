@@ -82,7 +82,11 @@ highlightedContentImage:(UIImage *)hcimg;
             [_delegate quadCurveMenuItemTouchesEnd:self];
         }
     }
-    
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.highlighted = NO;
 }
 
 #pragma mark - instant methods

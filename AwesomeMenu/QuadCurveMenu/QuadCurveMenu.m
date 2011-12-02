@@ -12,9 +12,18 @@
 #define NEARRADIUS 130.0f
 #define ENDRADIUS 140.0f
 #define FARRADIUS 160.0f
-#define STARTPOINT CGPointMake(50, 430)
+#define STARTPOINT CGPointMake(150, 430)
 #define TIMEOFFSET 0.026f
 
+#define ROTATEANGLE -M_PI_4
+
+static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float angle)
+{
+    CGAffineTransform translation = CGAffineTransformMakeTranslation(center.x, center.y);
+    CGAffineTransform rotation = CGAffineTransformMakeRotation(angle);
+    CGAffineTransform transformGroup = CGAffineTransformConcat(CGAffineTransformConcat(CGAffineTransformInvert(translation), rotation), translation);
+    return CGPointApplyAffineTransform(point, transformGroup);    
+}
 
 @interface QuadCurveMenu ()
 - (void)_expand;
@@ -35,22 +44,8 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        _menusArray = [aMenusArray copy];
-        
-        // add the menu buttons
-        int count = [_menusArray count];
-        for (int i = 0; i < count; i ++)
-        {
-            QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
-            item.tag = 1000 + i;
-            item.startPoint = STARTPOINT;
-            item.endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - ENDRADIUS * cosf(i * M_PI_2 / (count - 1)));
-            item.nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - NEARRADIUS * cosf(i * M_PI_2 / (count - 1)));
-            item.farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - FARRADIUS * cosf(i * M_PI_2 / (count - 1)));
-            item.center = item.startPoint;
-            item.delegate = self;
-            [self addSubview:item];
-        }
+        // layout menus
+        self.menusArray = aMenusArray;
         
         // add the "Add" Button.
         _addButton = [[QuadCurveMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
@@ -164,9 +159,12 @@
         QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = STARTPOINT;
-        item.endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - ENDRADIUS * cosf(i * M_PI_2 / (count - 1)));
-        item.nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - NEARRADIUS * cosf(i * M_PI_2 / (count - 1)));
-        item.farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - FARRADIUS * cosf(i * M_PI_2 / (count - 1)));
+        CGPoint endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - ENDRADIUS * cosf(i * M_PI_2 / (count - 1)));
+        item.endPoint = RotateCGPointAroundCenter(endPoint, STARTPOINT, ROTATEANGLE);
+        CGPoint nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - NEARRADIUS * cosf(i * M_PI_2 / (count - 1)));
+        item.nearPoint = RotateCGPointAroundCenter(nearPoint, STARTPOINT, ROTATEANGLE);
+        CGPoint farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * M_PI_2 / (count - 1)), STARTPOINT.y - FARRADIUS * cosf(i * M_PI_2 / (count - 1)));
+        item.farPoint = RotateCGPointAroundCenter(farPoint, STARTPOINT, ROTATEANGLE);  
         item.center = item.startPoint;
         item.delegate = self;
         [self addSubview:item];
@@ -197,7 +195,7 @@
 #pragma mark - private methods
 - (void)_expand
 {
-    if (_flag == 6)
+    if (_flag == [_menusArray count])
     {
         [_timer invalidate];
         [_timer release];
