@@ -10,7 +10,11 @@ In QuadCurveMenu.m
 
 * define the ROTATEANGLE to set the rotate angle.
 
+<<<<<<< HEAD
 * define the MENUWHOLEANGLE to set the whole menu angle.
+=======
+* define the MENUANGLE to set the whole menu angle.
+>>>>>>> origin/master
 
 * define the ENDRADIUS to set the distance between the "Add" button and Menu Items.
 
