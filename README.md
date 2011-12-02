@@ -10,7 +10,9 @@ In QuadCurveMenu.m
 
 * define the ROTATEANGLE to set the rotate angle.
 
-* define the ENDRADIUS to set the distance between the "Add" button and Menu Items
+* define the MENUANGLE to set the whole menu angle.
+
+* define the ENDRADIUS to set the distance between the "Add" button and Menu Items.
 
 * define the NEARRADIUS and FARRADIUS to adjust the bounce animation.
  
@@ -26,4 +28,4 @@ Enjoy to use it:)
 
 Thanks for [pashields](https://github.com/pashields) providing the [youtube demo](http://www.youtube.com/watch?v=vddaYMtETjo) :)
 
-![screenshots](http://lunaapp.com/images/external/qcmenu2.gif) ![screenshots](http://lunaapp.com/images/external/qcmenu3.gif)
+![screenshots](http://lunaapp.com/images/external/qcmenu2.gif) ![screenshots](http://lunaapp.com/images/external/qcmenu3.gif) ![screenshots](http://lunaapp.com/images/external/qcmenu4.gif)

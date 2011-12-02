@@ -28,44 +28,56 @@
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
     UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
     
-    // Camera MenuItem.
-    QuadCurveMenuItem *cameraMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                      highlightedImage:storyMenuItemImagePressed 
-                                          ContentImage:[UIImage imageNamed:@"icon-star.png"] 
-                               highlightedContentImage:nil];   
-    // People MenuItem.
-    QuadCurveMenuItem *peopleMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                      highlightedImage:storyMenuItemImagePressed 
-                                          ContentImage:[UIImage imageNamed:@"icon-star.png"] 
-                               highlightedContentImage:nil];    
-    // Place MenuItem.
-    QuadCurveMenuItem *placeMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                     highlightedImage:storyMenuItemImagePressed 
-                                         ContentImage:[UIImage imageNamed:@"icon-star.png"] 
-                              highlightedContentImage:nil];    
-    // Music MenuItem.
-    QuadCurveMenuItem *musicMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                     highlightedImage:storyMenuItemImagePressed 
-                                         ContentImage:[UIImage imageNamed:@"icon-star.png"] 
-                              highlightedContentImage:nil];    
-    // Thought MenuItem.
-    QuadCurveMenuItem *thoughtMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                       highlightedImage:storyMenuItemImagePressed 
-                                           ContentImage:[UIImage imageNamed:@"icon-star.png"] 
-                                highlightedContentImage:nil];   
-    // Sleep MenuItem.
-    QuadCurveMenuItem *sleepMenuItem = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                     highlightedImage:storyMenuItemImagePressed 
-                                         ContentImage:[UIImage imageNamed:@"icon-star.png"] 
-                              highlightedContentImage:nil];
+    UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
+
+    QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage 
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage 
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem3 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage 
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem4 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage 
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem5 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem6 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem7 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem8 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage
+                                                        highlightedContentImage:nil];
+    QuadCurveMenuItem *starMenuItem9 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+                                                               highlightedImage:storyMenuItemImagePressed 
+                                                                   ContentImage:starImage
+                                                        highlightedContentImage:nil];
     
-    NSArray *menus = [NSArray arrayWithObjects:cameraMenuItem, peopleMenuItem, placeMenuItem, musicMenuItem, thoughtMenuItem, sleepMenuItem, nil];
-    [cameraMenuItem release];
-    [peopleMenuItem release];
-    [placeMenuItem release];
-    [musicMenuItem release];
-    [thoughtMenuItem release];
-    [sleepMenuItem release];
+    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, starMenuItem6, starMenuItem7,starMenuItem8,starMenuItem9, nil];
+    [starMenuItem1 release];
+    [starMenuItem2 release];
+    [starMenuItem3 release];
+    [starMenuItem4 release];
+    [starMenuItem5 release];
+    [starMenuItem6 release];
+    [starMenuItem7 release];
+    [starMenuItem8 release];
+    [starMenuItem9 release];
+    
     QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.window.bounds menus:menus];
     menu.delegate = self;
     [self.window addSubview:menu];
