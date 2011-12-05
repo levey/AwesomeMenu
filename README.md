@@ -1,5 +1,7 @@
 QuadCurveMenu is a menu looks like [Path](https://path.com/)'s story menu.
 
+Here is a [**declaration in my blog**](http://www.lunaapp.com/blog/?p=66) :)
+
 ---
 
 **How To**:
