@@ -30,4 +30,4 @@ Enjoy to use it:)
 
 Thanks for [pashields](https://github.com/pashields) providing the [youtube demo](http://www.youtube.com/watch?v=vddaYMtETjo) :)
 
-![screenshots](http://s2.homezz.com/201112/2509/13588_o.gif) ![screenshots](http://s3.homezz.com/201112/2509/13590_o.gif) ![screenshots](http://s0.homezz.com/201112/2509/13591_o.gif)
+![screenshots](http://s3.homezz.com/201112/2509/13588_o.gif) ![screenshots](http://s3.homezz.com/201112/2509/13590_o.gif) ![screenshots](http://s3.homezz.com/201112/2509/13591_o.gif)
