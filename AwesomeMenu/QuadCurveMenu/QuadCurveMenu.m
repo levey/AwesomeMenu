@@ -154,16 +154,18 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
     // add the menu buttons
     int count = [_menusArray count];
+    int _count = (MENUWHOLEANGLE == M_PI * 2) ? count : count -1; // If 360 degrees then don't overlap item 0 with the last item. 
+    
     for (int i = 0; i < count; i ++)
     {
         QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = STARTPOINT;
-        CGPoint endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * MENUWHOLEANGLE / count), STARTPOINT.y - ENDRADIUS * cosf(i * MENUWHOLEANGLE / count));
+        CGPoint endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * MENUWHOLEANGLE / _count), STARTPOINT.y - ENDRADIUS * cosf(i * MENUWHOLEANGLE / _count));
         item.endPoint = RotateCGPointAroundCenter(endPoint, STARTPOINT, ROTATEANGLE);
-        CGPoint nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * MENUWHOLEANGLE / count), STARTPOINT.y - NEARRADIUS * cosf(i * MENUWHOLEANGLE / count));
+        CGPoint nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * MENUWHOLEANGLE / _count), STARTPOINT.y - NEARRADIUS * cosf(i * MENUWHOLEANGLE / _count));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, STARTPOINT, ROTATEANGLE);
-        CGPoint farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * MENUWHOLEANGLE / count), STARTPOINT.y - FARRADIUS * cosf(i * MENUWHOLEANGLE / count));
+        CGPoint farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * MENUWHOLEANGLE / _count), STARTPOINT.y - FARRADIUS * cosf(i * MENUWHOLEANGLE / _count));
         item.farPoint = RotateCGPointAroundCenter(farPoint, STARTPOINT, ROTATEANGLE);  
         item.center = item.startPoint;
         item.delegate = self;
