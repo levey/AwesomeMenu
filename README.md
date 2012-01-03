@@ -31,28 +31,28 @@ You can also use menu options:
 
 to locate the center of "Add" button:
 
-	menu.startPoint 
+	menu.startPoint = CGPointMake(160.0, 240.0);
 
 to set the rotate angle:
 
-	menu.rotateAngle 
+	menu.rotateAngle = 0.0;
 
 to set the whole menu angle:
 
-	menu.menuWholeAngle 
+	menu.menuWholeAngle = M_PI * 2;
 
 to set the delay of every menu flying out animation:
 
-	menu.timeOffset 
+	menu.timeOffset = 0.036f;
 
 to adjust the bounce animation:
 
-	menu.farRadius
-	menu.nearRadius
+	menu.farRadius = 140.0f;
+	menu.nearRadius = 110.0f;
 
 to set the distance between the "Add" button and Menu Items:
 
-	menu.endRadius
+	menu.endRadius = 120.0f;
 
 ---
 
