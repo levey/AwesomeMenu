@@ -30,22 +30,28 @@ Then, setup the menu and options:
 You can also use menu options:
 
 to locate the center of "Add" button:
+
 	menu.startPoint 
 
 to set the rotate angle:
+
 	menu.rotateAngle 
 
 to set the whole menu angle:
+
 	menu.menuWholeAngle 
 
 to set the delay of every menu flying out animation:
+
 	menu.timeOffset 
 
 to adjust the bounce animation:
+
 	menu.farRadius
 	menu.nearRadius
 
 to set the distance between the "Add" button and Menu Items:
+
 	menu.endRadius
 
 ---
