@@ -21,6 +21,8 @@
     id<QuadCurveMenuItemDelegate> _delegate;
 }
 
+@property (nonatomic, retain, readonly) UIImageView *contentImageView;
+
 @property (nonatomic) CGPoint startPoint;
 @property (nonatomic) CGPoint endPoint;
 @property (nonatomic) CGPoint nearPoint;
