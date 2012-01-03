@@ -9,43 +9,44 @@ Here is a [**declaration in my blog**](http://www.lunaapp.com/blog/?p=66) :)
 
 Create the menu by setting up the menu items:
 
-UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-
-UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
-
-UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
-    
-QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+	UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
+	UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
+	UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
+    QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage 
                                                         highlightedContentImage:nil];
-
-QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
+	QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage 
                                                         highlightedContentImage:nil];
 
 Then, setup the menu and options:
 
-QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.window.bounds [NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
-
-menu.delegate = self;
-
-[self.window addSubview:menu];
+	QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.window.bounds [NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
+	menu.delegate = self;
+	[self.window addSubview:menu];
 
 You can also use menu options:
 
-menu.startPoint to locate the center of "Add" button.
+to locate the center of "Add" button:
+	menu.startPoint 
 
-menu.rotateAngle to set the rotate angle.
+to set the rotate angle:
+	menu.rotateAngle 
 
-menu.menuWholeAngle to set the whole menu angle.
+to set the whole menu angle:
+	menu.menuWholeAngle 
 
-menu.timeOffset to set the delay of every menu flying out animation.
+to set the delay of every menu flying out animation:
+	menu.timeOffset 
 
-menu.farRadius and menu.nearRadius to adjust the bounce animation.
+to adjust the bounce animation:
+	menu.farRadius
+	menu.nearRadius
 
-menu.endRadius to set the distance between the "Add" button and Menu Items.
+to set the distance between the "Add" button and Menu Items:
+	menu.endRadius
 
 ---
 
