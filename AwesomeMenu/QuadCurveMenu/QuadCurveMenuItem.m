@@ -10,6 +10,8 @@
 static inline CGRect ScaleRect(CGRect rect, float n) {return CGRectMake((rect.size.width - rect.size.width * n)/ 2, (rect.size.height - rect.size.height * n) / 2, rect.size.width * n, rect.size.height * n);}
 @implementation QuadCurveMenuItem
 
+@synthesize contentImageView;
+
 @synthesize startPoint = _startPoint;
 @synthesize endPoint = _endPoint;
 @synthesize nearPoint = _nearPoint;
