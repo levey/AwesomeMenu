@@ -79,6 +79,17 @@
     [starMenuItem9 release];
     
     QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.window.bounds menus:menus];
+	
+	// customize menu
+	/*
+	menu.rotateAngle = M_PI/3;
+	menu.menuWholeAngle = M_PI;
+	menu.timeOffset = 0.2f;
+	menu.farRadius = 180.0f;
+	menu.endRadius = 100.0f;
+	menu.nearRadius = 50.0f;
+	*/
+	
     menu.delegate = self;
     [self.window addSubview:menu];
     [menu release];
