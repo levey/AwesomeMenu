@@ -11,6 +11,7 @@
 
 @protocol QuadCurveMenuDelegate;
 
+
 @interface QuadCurveMenu : UIView <QuadCurveMenuItemDelegate>
 {
     NSArray *_menusArray;
@@ -22,8 +23,22 @@
 
 }
 @property (nonatomic, copy) NSArray *menusArray;
-@property (nonatomic, getter = isExpanding)     BOOL expanding;
+@property (nonatomic, getter = isExpanding) BOOL expanding;
 @property (nonatomic, assign) id<QuadCurveMenuDelegate> delegate;
+
+@property (nonatomic, retain) UIImage *image;
+@property (nonatomic, retain) UIImage *highlightedImage;
+@property (nonatomic, retain) UIImage *contentImage;
+@property (nonatomic, retain) UIImage *highlightedContentImage;
+
+@property (nonatomic, assign) CGFloat nearRadius;
+@property (nonatomic, assign) CGFloat endRadius;
+@property (nonatomic, assign) CGFloat farRadius;
+@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGFloat timeOffset;
+@property (nonatomic, assign) CGFloat rotateAngle;
+@property (nonatomic, assign) CGFloat menuWholeAngle;
+
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
 @end
 

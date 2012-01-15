@@ -204,15 +204,31 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
             [v removeFromSuperview];
         }
     }
+<<<<<<< HEAD
+    // add the menu buttons
+    int count = [_menusArray count];
+    int _count = (MENUWHOLEANGLE == M_PI * 2) ? count : count -1; // If 360 degrees then don't overlap item 0 with the last item. 
+    
+=======
 }
 
 
 - (void)_setMenu {
 	int count = [_menusArray count];
+>>>>>>> upstream/master
     for (int i = 0; i < count; i ++)
     {
         QuadCurveMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
+<<<<<<< HEAD
+        item.startPoint = STARTPOINT;
+        CGPoint endPoint = CGPointMake(STARTPOINT.x + ENDRADIUS * sinf(i * MENUWHOLEANGLE / _count), STARTPOINT.y - ENDRADIUS * cosf(i * MENUWHOLEANGLE / _count));
+        item.endPoint = RotateCGPointAroundCenter(endPoint, STARTPOINT, ROTATEANGLE);
+        CGPoint nearPoint = CGPointMake(STARTPOINT.x + NEARRADIUS * sinf(i * MENUWHOLEANGLE / _count), STARTPOINT.y - NEARRADIUS * cosf(i * MENUWHOLEANGLE / _count));
+        item.nearPoint = RotateCGPointAroundCenter(nearPoint, STARTPOINT, ROTATEANGLE);
+        CGPoint farPoint = CGPointMake(STARTPOINT.x + FARRADIUS * sinf(i * MENUWHOLEANGLE / _count), STARTPOINT.y - FARRADIUS * cosf(i * MENUWHOLEANGLE / _count));
+        item.farPoint = RotateCGPointAroundCenter(farPoint, STARTPOINT, ROTATEANGLE);  
+=======
         item.startPoint = startPoint;
         CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf(i * menuWholeAngle / count), startPoint.y - endRadius * cosf(i * menuWholeAngle / count));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
@@ -220,6 +236,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
         CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf(i * menuWholeAngle / count), startPoint.y - farRadius * cosf(i * menuWholeAngle / count));
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
+>>>>>>> upstream/master
         item.center = item.startPoint;
         item.delegate = self;
 		[self insertSubview:item belowSubview:_addButton];
