@@ -206,6 +206,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
 }
 
+- (void)setStartPoint:(CGPoint)aStartPoint{
+    startPoint = aStartPoint;
+    _addButton.center = aStartPoint;
+}
+
 
 - (void)_setMenu {
 	int count = [_menusArray count];
