@@ -250,7 +250,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     {
         _flag = self.isExpanding ? 0 : ([_menusArray count] - 1);
         SEL selector = self.isExpanding ? @selector(_expand) : @selector(_close);
-        _timer = [[NSTimer scheduledTimerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES] retain];
+
+        // Adding timer to runloop to make sure UI event won't block the timer from firing
+        _timer = [[NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES] retain];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     }
 }
 #pragma mark - private methods
