@@ -38,6 +38,8 @@
 @property (nonatomic, assign) CGFloat timeOffset;
 @property (nonatomic, assign) CGFloat rotateAngle;
 @property (nonatomic, assign) CGFloat menuWholeAngle;
+@property (nonatomic, assign) CGFloat expandAnimationDuration;
+@property (nonatomic, assign) CGFloat closeAnimationDuration;
 
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
 @end
