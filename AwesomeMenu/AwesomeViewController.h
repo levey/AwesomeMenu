@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuadCurveMenu.h"
 
-@interface AwesomeViewController : UIViewController
+@interface AwesomeViewController : UIViewController <QuadCurveMenuDelegate>
 
 @end
