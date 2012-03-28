@@ -80,7 +80,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 @synthesize mainMenuItemFactory = mainMenuItemFactory_;
 @synthesize menuItemFactory = menuItemFactory_;
-@synthesize placeholderItemFactory = placeHolderItemFactory_;
 
 @synthesize selectedAnimation;
 @synthesize unselectedanimation;

@@ -29,7 +29,6 @@
 
 @property (nonatomic, strong) id<QuadCurveMenuItemFactory> mainMenuItemFactory;
 @property (nonatomic, strong) id<QuadCurveMenuItemFactory> menuItemFactory;
-@property (nonatomic, strong) id<QuadCurveMenuItemFactory> placeholderItemFactory;
 
 @property (nonatomic, strong) id<QuadCurveAnimation> selectedAnimation;
 @property (nonatomic, strong) id<QuadCurveAnimation> unselectedanimation;
