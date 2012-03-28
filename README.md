@@ -4,28 +4,102 @@ Here is a [**declaration in my blog**](http://www.lunaapp.com/blog/?p=66) :)
 
 ---
 
-**How To**:
+## Getting Started
 
 
-Create the menu by setting up the menu items:
+### Data Source
 
-	UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-	UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
-	UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
-    QuadCurveMenuItem *starMenuItem1 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed 
-                                                                   ContentImage:starImage 
-                                                        highlightedContentImage:nil];
-	QuadCurveMenuItem *starMenuItem2 = [[QuadCurveMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed 
-                                                                   ContentImage:starImage 
-                                                        highlightedContentImage:nil];
+First you define a data source, or have an existing data source,
+that adheres to the `QuadCurveDataSourceDelegate` protocol.
 
-Then, setup the menu and options:
+    @interface AwesomeDataSource : NSObject <QuadCurveDataSourceDelegate> {
+        NSMutableArray *dataItems;
+    }
+    @end
 
-	QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.window.bounds [NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
-	menu.delegate = self;
-	[self.window addSubview:menu];
+    @implementation AwesomeDataSource
+
+    - (id)init {
+        self = [super init];
+        if (self) {
+            dataItems = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6", nil];
+        }
+        return self;
+    }
+
+    #pragma mark - QuadCurveDataSourceDelegate Adherence
+
+    - (int)numberOfMenuItems {
+        return [dataItems count];
+    }
+
+    - (id)dataObjectAtIndex:(NSInteger)itemIndex {
+        return [dataItems objectAtIndex:itemIndex];
+    }
+    
+### Event Delegate
+
+Setup a delegate object, this will usually be the view controller showing the
+QuadCurveMenu, that adheres to the `QuadCurveMenuDelegate` protocol.
+
+    @interface AwesomeViewController : UIViewController <QuadCurveMenuDelegate>
+
+    @end
+
+    - (void)quadCurveMenu:(QuadCurveMenu *)menu didTapMenu:(QuadCurveMenuItem *)mainMenuItem {
+        NSLog(@"Menu - Tapped");
+    }
+
+    - (void)quadCurveMenu:(QuadCurveMenu *)menu didLongPressMenu:(QuadCurveMenuItem *)mainMenuItem {
+        NSLog(@"Menu - Long Pressed");
+    }
+
+    - (void)quadCurveMenu:(QuadCurveMenu *)menu didTapMenuItem:(QuadCurveMenuItem *)menuItem {
+        NSLog(@"Menu Item (%@) - Tapped",menuItem.dataObject);
+    }
+
+    - (void)quadCurveMenu:(QuadCurveMenu *)menu didLongPressMenuItem:(QuadCurveMenuItem *)menuItem {
+        NSLog(@"Menu Item (%@) - Long Pressed",menuItem.dataObject);
+    }
+
+    - (void)quadCurveMenuWillExpand:(QuadCurveMenu *)menu {
+        NSLog(@"Menu - Will Expand");
+    }
+
+    - (void)quadCurveMenuDidExpand:(QuadCurveMenu *)menu {
+        NSLog(@"Menu - Did Expand");
+    }
+
+    - (void)quadCurveMenuWillClose:(QuadCurveMenu *)menu {
+        NSLog(@"Menu - Will Close");
+    }
+
+    - (void)quadCurveMenuDidClose:(QuadCurveMenu *)menu {
+        NSLog(@"Menu - Did Close");
+    }
+
+    - (BOOL)quadCurveMenuShouldClose:(QuadCurveMenu *)menu {
+        return YES;
+    }
+
+    - (BOOL)quadCurveMenuShouldExpand:(QuadCurveMenu *)menu {
+        return YES;
+    }    
+
+### Creating the Menu
+
+Then within your view controller define the `QuadCurveMenu` with some bounds, 
+your data source, and your event delegate.
+
+
+    AwesomeDataSource *dataSource = [[AwesomeDataSource alloc] init];
+
+    QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds  dataSource:dataSource];
+
+    [menu setDelegate:self]
+    [self.view addSubview:menu];
+
+### Configuring the Menu
 
 You can also use menu options:
 
@@ -54,7 +128,92 @@ to set the distance between the "Add" button and Menu Items:
 
 	menu.endRadius = 120.0f;
 
----
+
+#### Changing the Images
+
+You can configure the look of the center, main menu item, and the menu items 
+that appear from the main menu. To do that you define an object that adheres 
+to the protocol `QuadCurveMenuItemFactory`.
+
+
+    #pragma mark - QuadCurveMenuItemFactory Adherence
+
+    - (QuadCurveMenuItem *)createMenuItemWithDataObject:(id)dataObject {
+
+        QuadCurveMenuItem *item = [[QuadCurveMenuItem alloc] initWithImage:image 
+                                                          highlightedImage:highlightImage
+                                                              contentImage:contentImage 
+                                                   highlightedContentImage:highlightContentImage];
+
+        [item setDataObject:dataObject];
+
+        return item;
+    }
+    
+Create an instance of that object and assign it to the QuadCurveMenu property `mainMenuItemFactory` or `menuItemFactory`.
+
+    id<QuadCurveMenuItemFactory> customMenuItemFactory = [[MyCustomMenuItemFactory alloc] init];
+
+    menu.mainMenuItemFactory = customMenuItemFactory;
+    menu.menuItemFactory = customMenuItemFactory;
+    
+By default the QuadCurveMenu uses `QuadCurveDefaultMenuItemFactory`. The main 
+menu item is set by:
+
+    [QuadCurveDefaultMenuItemFactory defaultMainMenuItemFactory]
+
+Each sub menu item are created by:
+
+    [QuadCurveDefaultMenuItemFactory defaultMenuItemFactory]
+    
+
+#### Changing Animations
+
+Several of the animations are customizable through properties. Viewing the
+example project you should see an __Animations__ group which contains the 
+default animations used in the application. You can customize them there or
+define your own and set them through properties on the `QuadCurveMenu`.
+
+Here is an example of swapping the default _selected_ and _unselected_ 
+animations:
+
+    menu.selectedAnimation = [[QuadCurveShrinkAnimation alloc] init]
+    menu.unselectedanimation = [[QuadCurveBlowupAnimation alloc] init]
+
+An animation is an object that adheres to the protocol `QuadCurveAnimation`. 
+
+    - (NSString *)animationName {
+        return @"blowup";
+    }
+
+    - (CAAnimationGroup *)animationForItem:(QuadCurveMenuItem *)item {
+    
+        CGPoint point = item.center;
+    
+        CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        positionAnimation.values = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:point], nil];
+        positionAnimation.keyTimes = [NSArray arrayWithObjects: [NSNumber numberWithFloat:.3], nil]; 
+    
+        CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+        scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(3, 3, 1)];
+    
+        CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        opacityAnimation.toValue  = [NSNumber numberWithFloat:0.0f];
+    
+        CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
+        animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
+        animationgroup.duration = 0.3f;
+    
+        return animationgroup;
+
+    }
+
+The name is used as the name for the animation within the layer. The animation 
+itself is called with the `QuadCurveMenuItem` and should return the animation
+group that will be performed.
+
+
+## Contact and Thanks
 
 Twitter: [@LeveyZhu](https://twitter.com/#!/LeveyZhu) 
 
