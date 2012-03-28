@@ -30,6 +30,7 @@
 		5C3FF3701486564E0098EE93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FF36F1486564E0098EE93 /* main.m */; };
 		5C3FF3741486564E0098EE93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FF3731486564E0098EE93 /* AppDelegate.m */; };
 		5C93DC61148673F2003029CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C93DC60148673F2003029CA /* QuartzCore.framework */; };
+		E28E900015239AF7008C936B /* AwesomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E8FFF15239AF7008C936B /* AwesomeViewController.m */; };
 		E2A899B81522A415004D5561 /* QuadCurveBlowupAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B31522A415004D5561 /* QuadCurveBlowupAnimation.m */; };
 		E2A899B91522A415004D5561 /* QuadCurveItemCloseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B51522A415004D5561 /* QuadCurveItemCloseAnimation.m */; };
 		E2A899BA1522A415004D5561 /* QuadCurveItemExpandAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B71522A415004D5561 /* QuadCurveItemExpandAnimation.m */; };
@@ -68,6 +69,8 @@
 		5C3FF3721486564E0098EE93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5C3FF3731486564E0098EE93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5C93DC60148673F2003029CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E28E8FFE15239AF7008C936B /* AwesomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeViewController.h; sourceTree = "<group>"; };
+		E28E8FFF15239AF7008C936B /* AwesomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeViewController.m; sourceTree = "<group>"; };
 		E2A899B11522A415004D5561 /* QuadCurveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveAnimation.h; sourceTree = "<group>"; };
 		E2A899B21522A415004D5561 /* QuadCurveBlowupAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveBlowupAnimation.h; sourceTree = "<group>"; };
 		E2A899B31522A415004D5561 /* QuadCurveBlowupAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveBlowupAnimation.m; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				5C3FF3731486564E0098EE93 /* AppDelegate.m */,
 				E2A899C11523840B004D5561 /* AwesomeDataSource.h */,
 				E2A899C21523840B004D5561 /* AwesomeDataSource.m */,
+				E28E8FFE15239AF7008C936B /* AwesomeViewController.h */,
+				E28E8FFF15239AF7008C936B /* AwesomeViewController.m */,
 				5C3FF36A1486564E0098EE93 /* Supporting Files */,
 			);
 			path = AwesomeMenu;
@@ -287,6 +292,7 @@
 				E2A899BD1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.m in Sources */,
 				E2A899C01522EAD7004D5561 /* QuadCurveShrinkAnimation.m in Sources */,
 				E2A899C31523840B004D5561 /* AwesomeDataSource.m in Sources */,
+				E28E900015239AF7008C936B /* AwesomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
