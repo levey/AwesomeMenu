@@ -72,6 +72,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)menuItemLongPressed:(QuadCurveMenuItem *)item;
 - (void)mainMenuItemLongPressed;
 
+- (void)singleTapInMenuView:(UITapGestureRecognizer *)tapGesture;
+
 @end
 
 #pragma mark - Implementation
@@ -124,6 +126,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.closeItemAnimation = [[QuadCurveItemCloseAnimation alloc] init];
         
         self.dataSource = dataSource;
+
+        
+        UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapInMenuView:)];
+        [self addGestureRecognizer:singleTapGesture];
+
         
         landingMenuItem = -1;
     }
@@ -137,7 +144,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
                mainMenuFactory:[QuadCurveDefaultMenuItemFactory defaultMainMenuItemFactory]
                menuItemFactory:[QuadCurveDefaultMenuItemFactory defaultMenuItemFactory]];    
 }
-          
+
 #pragma mark - Main Menu Item
 
 - (void)setMainMenuItemFactory:(id<QuadCurveMenuItemFactory>)mainMenuItemFactory {
@@ -202,6 +209,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     if ([self isExpanding]) {
         [self setExpanding:NO];
     }
+}
+
+#pragma mark - UIView Gestures
+
+- (void)singleTapInMenuView:(UITapGestureRecognizer *)tapGesture {
+    [self closeMenu];
 }
 
 #pragma mark - QuadCurveMenuItemEventDelegate Adherence
