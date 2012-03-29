@@ -9,6 +9,7 @@
 #import "QuadCurveMenu.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "QuadCurveDefaultDataSource.h"
 #import "QuadCurveDefaultMenuItemFactory.h"
 
 #import "QuadCurveBlowupAnimation.h"
@@ -136,6 +137,15 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
                     dataSource:dataSource 
                mainMenuFactory:[QuadCurveDefaultMenuItemFactory defaultMainMenuItemFactory]
                menuItemFactory:[QuadCurveDefaultMenuItemFactory defaultMenuItemFactory]];    
+}
+
+- (id)initWithFrame:(CGRect)frame withArray:(NSArray *)array {
+    
+    return [self initWithFrame:frame
+                    dataSource:[[QuadCurveDefaultDataSource alloc] initWithArray:array]
+               mainMenuFactory:[QuadCurveDefaultMenuItemFactory defaultMainMenuItemFactory]
+               menuItemFactory:[QuadCurveDefaultMenuItemFactory defaultMenuItemFactory]];
+    
 }
 
 #pragma mark - Main Menu Item

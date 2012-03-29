@@ -20,9 +20,11 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    AwesomeDataSource *dataSource = [[AwesomeDataSource alloc] init];
-
-    QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds  dataSource:dataSource];
+//    AwesomeDataSource *dataSource = [[AwesomeDataSource alloc] init];
+//    QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds dataSource:dataSource];
+    
+    QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds 
+                                                     withArray:[NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",nil]];
     menu.delegate = self;
     
 	// customize menu

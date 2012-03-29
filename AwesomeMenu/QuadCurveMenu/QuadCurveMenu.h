@@ -38,6 +38,8 @@
 @property (nonatomic, strong) id<QuadCurveMenuDelegate> delegate;
 @property (nonatomic, strong) id<QuadCurveDataSourceDelegate> dataSource;
 
+- (id)initWithFrame:(CGRect)frame withArray:(NSArray *)array;
+
 - (id)initWithFrame:(CGRect)frame dataSource:(id<QuadCurveDataSourceDelegate>)dataSource;
 
 - (id)initWithFrame:(CGRect)frame 
@@ -85,4 +87,3 @@
 - (QuadCurveMenuItem *)createMenuItemWithDataObject:(id)dataObject;
 
 @end
-
