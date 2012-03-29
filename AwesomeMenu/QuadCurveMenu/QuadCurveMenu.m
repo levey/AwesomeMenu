@@ -170,8 +170,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 - (void)setDelegate:(id<QuadCurveMenuDelegate>)delegate {
     
-    [self willChangeValueForKey:@"delegate"];
-    
     _delegate = delegate;
     
     delegateHasDidTapMainMenu = [delegate respondsToSelector:@selector(quadCurveMenu:didTapMenu:)];
@@ -187,7 +185,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     delegateHasWillClose = [delegate respondsToSelector:@selector(quadCurveMenuWillClose:)];
     delegateHasDidClose = [delegate respondsToSelector:@selector(quadCurveMenuDidClose:)];
     
-    [self didChangeValueForKey:@"delegate"];
 }
 
 #pragma mark - Data Source Delegate
