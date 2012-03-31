@@ -36,4 +36,8 @@
 
 }
 
+- (CGFloat)delayBetweenAnimation {
+    return 0.036f;
+}
+
 @end

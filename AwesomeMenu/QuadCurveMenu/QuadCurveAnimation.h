@@ -13,5 +13,6 @@
 
 - (NSString *)animationName;
 - (CAAnimationGroup *)animationForItem:(QuadCurveMenuItem *)item;
+- (CGFloat)delayBetweenAnimation;
 
 @end

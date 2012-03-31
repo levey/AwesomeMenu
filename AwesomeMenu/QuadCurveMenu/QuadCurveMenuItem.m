@@ -55,6 +55,7 @@ highlightedContentImage:(UIImage *)_highlightedContentImage {
         
         [self addSubview:_contentImageView];
         
+        self.frame = CGRectMake(self.center.x - self.image.size.width/2,self.center.y - self.image.size.height/2,self.image.size.width, self.image.size.height);
         
         UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnMenuItem:)];
         

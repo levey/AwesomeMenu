@@ -8,6 +8,8 @@
 
 #import "AwesomeViewController.h"
 #import "AwesomeDataSource.h"
+#import "QuadCurveRadialDirector.h"
+#import "QuadCurveLinearDirector.h"
 
 @interface AwesomeViewController ()
 
@@ -25,18 +27,12 @@
     
     QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds 
                                                      withArray:[NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",nil]];
+    
+//    [menu setMenuDirector:[[QuadCurveLinearDirector alloc] initWithAngle:M_PI/2 andPadding:10.0]];
+    [menu setMenuDirector:[[QuadCurveRadialDirector alloc] initWithMenuWholeAngle:M_PI/2 andInitialRotation:0]];
+    
     menu.delegate = self;
-    
-	// customize menu
-	/*
-     menu.rotateAngle = M_PI/3;
-     menu.menuWholeAngle = M_PI;
-     menu.timeOffset = 0.2f;
-     menu.farRadius = 180.0f;
-     menu.endRadius = 100.0f;
-     menu.nearRadius = 50.0f;
-     */
-    
+
     [self.view addSubview:menu];
 	
 }

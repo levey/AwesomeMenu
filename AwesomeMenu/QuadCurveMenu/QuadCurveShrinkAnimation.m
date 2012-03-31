@@ -31,10 +31,14 @@
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
     animationgroup.duration = 0.3f;
-//    animationgroup.fillMode = kCAFillModeForwards;
     
     return animationgroup;
 
 }
+
+- (CGFloat)delayBetweenAnimation {
+    return 0.036f;
+}
+
 
 @end
