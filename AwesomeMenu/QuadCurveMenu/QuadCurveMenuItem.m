@@ -7,8 +7,24 @@
 //
 
 #import "QuadCurveMenuItem.h"
+
 static inline CGRect ScaleRect(CGRect rect, float n) {return CGRectMake((rect.size.width - rect.size.width * n)/ 2, (rect.size.height - rect.size.height * n) / 2, rect.size.width * n, rect.size.height * n);}
+
+@interface QuadCurveMenuItem () {
+    
+    BOOL delegateHasLongPressed;
+    BOOL delegateHasTapped;
+    
+}
+
+- (void)longPressOnMenuItem:(UIGestureRecognizer *)sender;
+- (void)singleTapOnMenuItem:(UIGestureRecognizer *)sender;
+
+@end
+
 @implementation QuadCurveMenuItem
+
+@synthesize dataObject;
 
 @synthesize contentImageView = _contentImageView;
 
@@ -16,32 +32,77 @@ static inline CGRect ScaleRect(CGRect rect, float n) {return CGRectMake((rect.si
 @synthesize endPoint = _endPoint;
 @synthesize nearPoint = _nearPoint;
 @synthesize farPoint = _farPoint;
-@synthesize delegate  = _delegate;
+@synthesize delegate  = delegate_;
 
-#pragma mark - initialization & cleaning up
-- (id)initWithImage:(UIImage *)img 
-   highlightedImage:(UIImage *)himg
-       ContentImage:(UIImage *)cimg
-highlightedContentImage:(UIImage *)hcimg;
-{
-    if (self = [super init]) 
-    {
-        self.image = img;
-        self.highlightedImage = himg;
+@dynamic image;
+@dynamic highlightedImage;
+
+#pragma mark - Initialization
+
+- (id)initWithImage:(UIImage *)_image 
+   highlightedImage:(UIImage *)_highlightedImage 
+       contentImage:(UIImage *)_contentImage 
+highlightedContentImage:(UIImage *)_highlightedContentImage {
+    
+    if (self = [super init]) {
+        
         self.userInteractionEnabled = YES;
-        _contentImageView = [[UIImageView alloc] initWithImage:cimg];
-        _contentImageView.highlightedImage = hcimg;
+        
+        self.image = _image;
+        self.highlightedImage = _highlightedImage;
+        _contentImageView = [[UIImageView alloc] initWithImage:_contentImage];
+        _contentImageView.highlightedImage = _highlightedContentImage;
+        
         [self addSubview:_contentImageView];
+        
+        self.frame = CGRectMake(self.center.x - self.image.size.width/2,self.center.y - self.image.size.height/2,self.image.size.width, self.image.size.height);
+        
+        UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnMenuItem:)];
+        
+        [self addGestureRecognizer:longPressGesture];
+        
+        UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapOnMenuItem:)];
+        
+        [self addGestureRecognizer:singleTapGesture];
+        
+        [self setUserInteractionEnabled:YES];
+
+        
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [_contentImageView release];
-    [super dealloc];
+#pragma mark - Delegate
+
+- (void)setDelegate:(id<QuadCurveMenuItemEventDelegate>)delegate {
+    
+    delegate_ = delegate;
+    
+    delegateHasLongPressed = [delegate respondsToSelector:@selector(quadCurveMenuItemLongPressed:)];
+    delegateHasTapped = [delegate respondsToSelector:@selector(quadCurveMenuItemTapped:)];
+    
 }
+
+#pragma mark - Gestures
+
+- (void)longPressOnMenuItem:(UILongPressGestureRecognizer *)sender {
+    
+    if (delegateHasLongPressed) {
+        [delegate_ quadCurveMenuItemLongPressed:self];
+    }
+    
+}
+
+- (void)singleTapOnMenuItem:(UITapGestureRecognizer *)sender {
+    
+    if (delegateHasTapped) {
+        [delegate_ quadCurveMenuItemTapped:self];
+    }
+    
+}
+
 #pragma mark - UIView's methods
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -53,47 +114,10 @@ highlightedContentImage:(UIImage *)hcimg;
     _contentImageView.frame = CGRectMake(self.bounds.size.width/2 - width/2, self.bounds.size.height/2 - height/2, width, height);
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    self.highlighted = YES;
-    if ([_delegate respondsToSelector:@selector(quadCurveMenuItemTouchesBegan:)])
-    {
-       [_delegate quadCurveMenuItemTouchesBegan:self];
-    }
-    
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // if move out of 2x rect, cancel highlighted.
-    CGPoint location = [[touches anyObject] locationInView:self];
-    if (!CGRectContainsPoint(ScaleRect(self.bounds, 2.0f), location))
-    {
-        self.highlighted = NO;
-    }
-    
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    self.highlighted = NO;
-    // if stop in the area of 2x rect, response to the touches event.
-    CGPoint location = [[touches anyObject] locationInView:self];
-    if (CGRectContainsPoint(ScaleRect(self.bounds, 2.0f), location))
-    {
-        if ([_delegate respondsToSelector:@selector(quadCurveMenuItemTouchesEnd:)])
-        {
-            [_delegate quadCurveMenuItemTouchesEnd:self];
-        }
-    }
-}
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    self.highlighted = NO;
-}
+#pragma mark - Status Methods
 
-#pragma mark - instant methods
-- (void)setHighlighted:(BOOL)highlighted
-{
+- (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
     [_contentImageView setHighlighted:highlighted];
 }

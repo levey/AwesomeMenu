@@ -30,6 +30,16 @@
 		5C3FF3701486564E0098EE93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FF36F1486564E0098EE93 /* main.m */; };
 		5C3FF3741486564E0098EE93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FF3731486564E0098EE93 /* AppDelegate.m */; };
 		5C93DC61148673F2003029CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C93DC60148673F2003029CA /* QuartzCore.framework */; };
+		E21A256C152412870055DDD7 /* QuadCurveDefaultDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21A256B152412870055DDD7 /* QuadCurveDefaultDataSource.m */; };
+		E2373EB41526D1B200EE06ED /* QuadCurveLinearDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = E2373EB11526D1B200EE06ED /* QuadCurveLinearDirector.m */; };
+		E2373EB51526D1B200EE06ED /* QuadCurveRadialDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = E2373EB31526D1B200EE06ED /* QuadCurveRadialDirector.m */; };
+		E28E900015239AF7008C936B /* AwesomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E8FFF15239AF7008C936B /* AwesomeViewController.m */; };
+		E2A899B81522A415004D5561 /* QuadCurveBlowupAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B31522A415004D5561 /* QuadCurveBlowupAnimation.m */; };
+		E2A899B91522A415004D5561 /* QuadCurveItemCloseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B51522A415004D5561 /* QuadCurveItemCloseAnimation.m */; };
+		E2A899BA1522A415004D5561 /* QuadCurveItemExpandAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B71522A415004D5561 /* QuadCurveItemExpandAnimation.m */; };
+		E2A899BD1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899BC1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.m */; };
+		E2A899C01522EAD7004D5561 /* QuadCurveShrinkAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899BF1522EAD7004D5561 /* QuadCurveShrinkAnimation.m */; };
+		E2A899C31523840B004D5561 /* AwesomeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899C21523840B004D5561 /* AwesomeDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +72,28 @@
 		5C3FF3721486564E0098EE93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5C3FF3731486564E0098EE93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5C93DC60148673F2003029CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E21A256A152412870055DDD7 /* QuadCurveDefaultDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveDefaultDataSource.h; sourceTree = "<group>"; };
+		E21A256B152412870055DDD7 /* QuadCurveDefaultDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveDefaultDataSource.m; sourceTree = "<group>"; };
+		E2373EB01526D1B200EE06ED /* QuadCurveLinearDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveLinearDirector.h; sourceTree = "<group>"; };
+		E2373EB11526D1B200EE06ED /* QuadCurveLinearDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveLinearDirector.m; sourceTree = "<group>"; };
+		E2373EB21526D1B200EE06ED /* QuadCurveRadialDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveRadialDirector.h; sourceTree = "<group>"; };
+		E2373EB31526D1B200EE06ED /* QuadCurveRadialDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveRadialDirector.m; sourceTree = "<group>"; };
+		E2373EC01526E14C00EE06ED /* QuadCurveMotionDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveMotionDirector.h; sourceTree = "<group>"; };
+		E28E8FFE15239AF7008C936B /* AwesomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeViewController.h; sourceTree = "<group>"; };
+		E28E8FFF15239AF7008C936B /* AwesomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeViewController.m; sourceTree = "<group>"; };
+		E2A899B11522A415004D5561 /* QuadCurveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveAnimation.h; sourceTree = "<group>"; };
+		E2A899B21522A415004D5561 /* QuadCurveBlowupAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveBlowupAnimation.h; sourceTree = "<group>"; };
+		E2A899B31522A415004D5561 /* QuadCurveBlowupAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveBlowupAnimation.m; sourceTree = "<group>"; };
+		E2A899B41522A415004D5561 /* QuadCurveItemCloseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveItemCloseAnimation.h; sourceTree = "<group>"; };
+		E2A899B51522A415004D5561 /* QuadCurveItemCloseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveItemCloseAnimation.m; sourceTree = "<group>"; };
+		E2A899B61522A415004D5561 /* QuadCurveItemExpandAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveItemExpandAnimation.h; sourceTree = "<group>"; };
+		E2A899B71522A415004D5561 /* QuadCurveItemExpandAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveItemExpandAnimation.m; sourceTree = "<group>"; };
+		E2A899BB1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveDefaultMenuItemFactory.h; sourceTree = "<group>"; };
+		E2A899BC1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveDefaultMenuItemFactory.m; sourceTree = "<group>"; };
+		E2A899BE1522EAD7004D5561 /* QuadCurveShrinkAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveShrinkAnimation.h; sourceTree = "<group>"; };
+		E2A899BF1522EAD7004D5561 /* QuadCurveShrinkAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveShrinkAnimation.m; sourceTree = "<group>"; };
+		E2A899C11523840B004D5561 /* AwesomeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AwesomeDataSource.h; path = AwesomeMenu/AwesomeDataSource.h; sourceTree = SOURCE_ROOT; };
+		E2A899C21523840B004D5561 /* AwesomeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AwesomeDataSource.m; path = AwesomeMenu/AwesomeDataSource.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +135,16 @@
 		5C0364981488A5D4000CE00F /* QuadCurveMenu */ = {
 			isa = PBXGroup;
 			children = (
+				E2A899AF1522A3FE004D5561 /* Animations */,
+				E2373EAF1526D18C00EE06ED /* Directors */,
 				5C0364991488A5D4000CE00F /* QuadCurveMenu.h */,
 				5C03649A1488A5D4000CE00F /* QuadCurveMenu.m */,
 				5C03649B1488A5D4000CE00F /* QuadCurveMenuItem.h */,
 				5C03649C1488A5D4000CE00F /* QuadCurveMenuItem.m */,
+				E21A256A152412870055DDD7 /* QuadCurveDefaultDataSource.h */,
+				E21A256B152412870055DDD7 /* QuadCurveDefaultDataSource.m */,
+				E2A899BB1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.h */,
+				E2A899BC1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.m */,
 			);
 			path = QuadCurveMenu;
 			sourceTree = "<group>";
@@ -142,11 +180,15 @@
 		5C3FF3691486564E0098EE93 /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
-				5C0364891488A5D4000CE00F /* Images */,
-				5C0364981488A5D4000CE00F /* QuadCurveMenu */,
 				5C3FF3721486564E0098EE93 /* AppDelegate.h */,
 				5C3FF3731486564E0098EE93 /* AppDelegate.m */,
+				E2A899C11523840B004D5561 /* AwesomeDataSource.h */,
+				E2A899C21523840B004D5561 /* AwesomeDataSource.m */,
+				E28E8FFE15239AF7008C936B /* AwesomeViewController.h */,
+				E28E8FFF15239AF7008C936B /* AwesomeViewController.m */,
+				5C0364891488A5D4000CE00F /* Images */,
 				5C3FF36A1486564E0098EE93 /* Supporting Files */,
+				5C0364981488A5D4000CE00F /* QuadCurveMenu */,
 			);
 			path = AwesomeMenu;
 			sourceTree = "<group>";
@@ -160,6 +202,34 @@
 				5C3FF3711486564E0098EE93 /* AwesomeMenu-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2373EAF1526D18C00EE06ED /* Directors */ = {
+			isa = PBXGroup;
+			children = (
+				E2373EC01526E14C00EE06ED /* QuadCurveMotionDirector.h */,
+				E2373EB01526D1B200EE06ED /* QuadCurveLinearDirector.h */,
+				E2373EB11526D1B200EE06ED /* QuadCurveLinearDirector.m */,
+				E2373EB21526D1B200EE06ED /* QuadCurveRadialDirector.h */,
+				E2373EB31526D1B200EE06ED /* QuadCurveRadialDirector.m */,
+			);
+			name = Directors;
+			sourceTree = "<group>";
+		};
+		E2A899AF1522A3FE004D5561 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				E2A899B11522A415004D5561 /* QuadCurveAnimation.h */,
+				E2A899B21522A415004D5561 /* QuadCurveBlowupAnimation.h */,
+				E2A899B31522A415004D5561 /* QuadCurveBlowupAnimation.m */,
+				E2A899BE1522EAD7004D5561 /* QuadCurveShrinkAnimation.h */,
+				E2A899BF1522EAD7004D5561 /* QuadCurveShrinkAnimation.m */,
+				E2A899B41522A415004D5561 /* QuadCurveItemCloseAnimation.h */,
+				E2A899B51522A415004D5561 /* QuadCurveItemCloseAnimation.m */,
+				E2A899B61522A415004D5561 /* QuadCurveItemExpandAnimation.h */,
+				E2A899B71522A415004D5561 /* QuadCurveItemExpandAnimation.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +311,16 @@
 				5C3FF3741486564E0098EE93 /* AppDelegate.m in Sources */,
 				5C0364AB1488A5D4000CE00F /* QuadCurveMenu.m in Sources */,
 				5C0364AC1488A5D4000CE00F /* QuadCurveMenuItem.m in Sources */,
+				E2A899B81522A415004D5561 /* QuadCurveBlowupAnimation.m in Sources */,
+				E2A899B91522A415004D5561 /* QuadCurveItemCloseAnimation.m in Sources */,
+				E2A899BA1522A415004D5561 /* QuadCurveItemExpandAnimation.m in Sources */,
+				E2A899BD1522A62B004D5561 /* QuadCurveDefaultMenuItemFactory.m in Sources */,
+				E2A899C01522EAD7004D5561 /* QuadCurveShrinkAnimation.m in Sources */,
+				E2A899C31523840B004D5561 /* AwesomeDataSource.m in Sources */,
+				E28E900015239AF7008C936B /* AwesomeViewController.m in Sources */,
+				E21A256C152412870055DDD7 /* QuadCurveDefaultDataSource.m in Sources */,
+				E2373EB41526D1B200EE06ED /* QuadCurveLinearDirector.m in Sources */,
+				E2373EB51526D1B200EE06ED /* QuadCurveRadialDirector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +384,7 @@
 		5C3FF3781486564E0098EE93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwesomeMenu/AwesomeMenu-Prefix.pch";
 				INFOPLIST_FILE = "AwesomeMenu/AwesomeMenu-Info.plist";
@@ -316,6 +397,7 @@
 		5C3FF3791486564E0098EE93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AwesomeMenu/AwesomeMenu-Prefix.pch";
 				INFOPLIST_FILE = "AwesomeMenu/AwesomeMenu-Info.plist";

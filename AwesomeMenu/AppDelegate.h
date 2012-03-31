@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QuadCurveMenu.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate, QuadCurveMenuDelegate>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

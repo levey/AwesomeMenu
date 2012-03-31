@@ -8,37 +8,37 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol QuadCurveMenuItemDelegate;
+@protocol QuadCurveMenuItemEventDelegate;
+@protocol QuadCurveMenuItemFactory;
+
 
 @interface QuadCurveMenuItem : UIImageView
-{
-    UIImageView *_contentImageView;
-    CGPoint _startPoint;
-    CGPoint _endPoint;
-    CGPoint _nearPoint; // near
-    CGPoint _farPoint; // far
-    
-    id<QuadCurveMenuItemDelegate> _delegate;
-}
 
-@property (nonatomic, retain, readonly) UIImageView *contentImageView;
+@property (nonatomic, strong) id dataObject;
+
+@property (nonatomic, readonly) UIImageView *contentImageView;
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *highlightedImage;
 
 @property (nonatomic) CGPoint startPoint;
 @property (nonatomic) CGPoint endPoint;
 @property (nonatomic) CGPoint nearPoint;
 @property (nonatomic) CGPoint farPoint;
 
-@property (nonatomic, assign) id<QuadCurveMenuItemDelegate> delegate;
+@property (nonatomic, strong) id<QuadCurveMenuItemEventDelegate> delegate;
 
-- (id)initWithImage:(UIImage *)img 
-   highlightedImage:(UIImage *)himg
-       ContentImage:(UIImage *)cimg
-highlightedContentImage:(UIImage *)hcimg;
-
+- (id)initWithImage:(UIImage *)image 
+   highlightedImage:(UIImage *)highlightedImage
+       contentImage:(UIImage *)contentImage
+    highlightedContentImage:(UIImage *)highlightContentImage;
 
 @end
 
-@protocol QuadCurveMenuItemDelegate <NSObject>
-- (void)quadCurveMenuItemTouchesBegan:(QuadCurveMenuItem *)item;
-- (void)quadCurveMenuItemTouchesEnd:(QuadCurveMenuItem *)item;
+@protocol QuadCurveMenuItemEventDelegate <NSObject>
+
+@optional
+
+- (void)quadCurveMenuItemLongPressed:(QuadCurveMenuItem *)item;
+- (void)quadCurveMenuItemTapped:(QuadCurveMenuItem *)item;
+
 @end
