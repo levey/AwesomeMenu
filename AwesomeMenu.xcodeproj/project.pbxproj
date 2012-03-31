@@ -78,6 +78,7 @@
 		E2373EB11526D1B200EE06ED /* QuadCurveLinearDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveLinearDirector.m; sourceTree = "<group>"; };
 		E2373EB21526D1B200EE06ED /* QuadCurveRadialDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveRadialDirector.h; sourceTree = "<group>"; };
 		E2373EB31526D1B200EE06ED /* QuadCurveRadialDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveRadialDirector.m; sourceTree = "<group>"; };
+		E2373EC01526E14C00EE06ED /* QuadCurveMotionDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveMotionDirector.h; sourceTree = "<group>"; };
 		E28E8FFE15239AF7008C936B /* AwesomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeViewController.h; sourceTree = "<group>"; };
 		E28E8FFF15239AF7008C936B /* AwesomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeViewController.m; sourceTree = "<group>"; };
 		E2A899B11522A415004D5561 /* QuadCurveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveAnimation.h; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 		E2373EAF1526D18C00EE06ED /* Directors */ = {
 			isa = PBXGroup;
 			children = (
+				E2373EC01526E14C00EE06ED /* QuadCurveMotionDirector.h */,
 				E2373EB01526D1B200EE06ED /* QuadCurveLinearDirector.h */,
 				E2373EB11526D1B200EE06ED /* QuadCurveLinearDirector.m */,
 				E2373EB21526D1B200EE06ED /* QuadCurveRadialDirector.h */,

@@ -3,7 +3,7 @@
 //  AwesomeMenu
 //
 //  Created by Franklin Webber on 3/30/12.
-//  Copyright (c) 2012 University of Washington. All rights reserved.
+//  Copyright (c) 2012 Franklin Webber. All rights reserved.
 //
 
 #import "QuadCurveRadialDirector.h"
