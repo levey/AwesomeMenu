@@ -13,9 +13,13 @@
 
 @interface AwesomeViewController ()
 
+@property (nonatomic,assign) QuadCurveMenu *menu;
+
 @end
 
 @implementation AwesomeViewController
+
+@synthesize menu = menu_;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,12 +30,13 @@
 //    QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds dataSource:dataSource];
     
     QuadCurveMenu *menu = [[QuadCurveMenu alloc] initWithFrame:self.view.bounds 
-                                                     withArray:[NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",nil]];
+                                      withArray:[NSArray arrayWithObjects:@"1",@"2",@"3",@"4",nil]];
     
-//    [menu setMenuDirector:[[QuadCurveLinearDirector alloc] initWithAngle:M_PI/2 andPadding:10.0]];
     [menu setMenuDirector:[[QuadCurveRadialDirector alloc] initWithMenuWholeAngle:M_PI/2 andInitialRotation:0]];
     
     menu.delegate = self;
+    
+    self.menu = menu;
 
     [self.view addSubview:menu];
 	
@@ -69,6 +74,16 @@
 
 - (void)quadCurveMenuDidClose:(QuadCurveMenu *)menu {
     NSLog(@"Menu - Did Close");
+    
+    static int alternatingMenuTypeCount = 0;
+    
+    if (alternatingMenuTypeCount % 2 == 0) {
+        [self.menu setMenuDirector:[[QuadCurveLinearDirector alloc] initWithAngle:M_PI/2 andPadding:10.0]];
+    } else {
+        [self.menu setMenuDirector:[[QuadCurveRadialDirector alloc] initWithMenuWholeAngle:M_PI andInitialRotation:0]];
+    }
+    
+    alternatingMenuTypeCount = alternatingMenuTypeCount + 1; 
 }
 
 - (BOOL)quadCurveMenuShouldClose:(QuadCurveMenu *)menu {
