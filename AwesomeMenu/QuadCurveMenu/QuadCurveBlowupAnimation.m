@@ -38,9 +38,9 @@ static float const kQuadCurveDefaultBlowUpScale = 3.0f;
     
     CGPoint point = item.center;
     
-    CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    positionAnimation.values = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:point], nil];
-    positionAnimation.keyTimes = [NSArray arrayWithObjects: [NSNumber numberWithFloat:.3], nil]; 
+    CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:point];
+    positionAnimation.toValue = [NSValue valueWithCGPoint:point];
     
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(self.blowUpScale, self.blowUpScale, 1)];
@@ -51,7 +51,7 @@ static float const kQuadCurveDefaultBlowUpScale = 3.0f;
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
     animationgroup.duration = self.duration;
-    
+    animationgroup.fillMode = kCAFillModeForwards;
     return animationgroup;
 
 }
