@@ -8,7 +8,28 @@
 
 #import "QuadCurveItemExpandAnimation.h"
 
+static float const kQuadCurveDefaultRotation = M_PI * 2;
+
 @implementation QuadCurveItemExpandAnimation
+
+@synthesize duration;
+@synthesize rotation;
+@synthesize delayBetweenItemAnimation;
+
+#pragma mark - Initialization
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.rotation = kQuadCurveDefaultRotation;
+        self.duration = kQuadCoreDefaultAnimationDuration;
+        self.delayBetweenItemAnimation = kQuadCoreDefaultDelayBetweenItemAnimation;
+    }
+    return self;
+}
+
+#pragma mark - QuadCurveAnimation Adherence
+
 
 - (NSString *)animationName {
     return @"Expand";
@@ -18,13 +39,13 @@
     
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotateAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:M_PI],[NSNumber numberWithFloat:0.0f], nil];
-    rotateAnimation.duration = 0.5f;
+    rotateAnimation.duration = self.duration;
     rotateAnimation.keyTimes = [NSArray arrayWithObjects:
                                 [NSNumber numberWithFloat:.3], 
                                 [NSNumber numberWithFloat:.4], nil]; 
     
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    positionAnimation.duration = 0.5f;
+    positionAnimation.duration = self.duration;
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, item.startPoint.x, item.startPoint.y);
     CGPathAddLineToPoint(path, NULL, item.farPoint.x, item.farPoint.y);
@@ -35,14 +56,11 @@
     
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
-    animationgroup.duration = 0.5f;
+    animationgroup.duration = self.duration;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
 
     return animationgroup;
 }
 
-- (CGFloat)delayBetweenAnimation {
-    return 0.036f;
-}
 
 @end

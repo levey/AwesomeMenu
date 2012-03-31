@@ -398,7 +398,7 @@ static int const kQuadCurveMenuItemStartingTag = 1000;
     
     for (int x = 0; x < [itemToBeAnimated count]; x++) {
         QuadCurveMenuItem *item = [itemToBeAnimated objectAtIndex:x];
-        [self performSelector:@selector(animateMenuItemToEndPoint:) withObject:item afterDelay:self.closeItemAnimation.delayBetweenAnimation * x];
+        [self performSelector:@selector(animateMenuItemToEndPoint:) withObject:item afterDelay:self.closeItemAnimation.delayBetweenItemAnimation * x];
     }
     
     if (delegateHasDidExpand) {
@@ -425,7 +425,7 @@ static int const kQuadCurveMenuItemStartingTag = 1000;
     
     for (int x = 0; x < [itemToBeAnimated count]; x++) {
         QuadCurveMenuItem *item = [itemToBeAnimated objectAtIndex:x];
-        [self performSelector:@selector(animateItemToStartPoint:) withObject:item afterDelay:self.expandItemAnimation.delayBetweenAnimation * x];
+        [self performSelector:@selector(animateItemToStartPoint:) withObject:item afterDelay:self.expandItemAnimation.delayBetweenItemAnimation * x];
     }
     
     if (delegateHasDidClose) {

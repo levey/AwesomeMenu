@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 Franklin Webber. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "QuadCurveAnimation.h"
 
 @interface QuadCurveShrinkAnimation : NSObject <QuadCurveAnimation>
+
+@property (nonatomic,assign) CGFloat shrinkScale;
 
 @end

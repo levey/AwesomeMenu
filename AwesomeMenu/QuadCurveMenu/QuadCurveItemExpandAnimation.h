@@ -10,4 +10,6 @@
 
 @interface QuadCurveItemExpandAnimation : NSObject <QuadCurveAnimation>
 
+@property (nonatomic,assign) CGFloat rotation;
+
 @end
