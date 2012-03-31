@@ -172,15 +172,15 @@
 		5C3FF3691486564E0098EE93 /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
-				5C0364891488A5D4000CE00F /* Images */,
-				5C0364981488A5D4000CE00F /* QuadCurveMenu */,
 				5C3FF3721486564E0098EE93 /* AppDelegate.h */,
 				5C3FF3731486564E0098EE93 /* AppDelegate.m */,
 				E2A899C11523840B004D5561 /* AwesomeDataSource.h */,
 				E2A899C21523840B004D5561 /* AwesomeDataSource.m */,
 				E28E8FFE15239AF7008C936B /* AwesomeViewController.h */,
 				E28E8FFF15239AF7008C936B /* AwesomeViewController.m */,
+				5C0364891488A5D4000CE00F /* Images */,
 				5C3FF36A1486564E0098EE93 /* Supporting Files */,
+				5C0364981488A5D4000CE00F /* QuadCurveMenu */,
 			);
 			path = AwesomeMenu;
 			sourceTree = "<group>";
