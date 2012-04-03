@@ -29,6 +29,8 @@
 @property (nonatomic, strong) id<QuadCurveAnimation> unselectedanimation;
 @property (nonatomic, strong) id<QuadCurveAnimation> expandItemAnimation;
 @property (nonatomic, strong) id<QuadCurveAnimation> closeItemAnimation;
+@property (nonatomic, strong) id<QuadCurveAnimation> mainMenuExpandAnimation;
+@property (nonatomic, strong) id<QuadCurveAnimation> mainMenuCloseAnimation;
 
 @property (nonatomic, strong) id<QuadCurveMenuDelegate> delegate;
 @property (nonatomic, strong) id<QuadCurveDataSourceDelegate> dataSource;

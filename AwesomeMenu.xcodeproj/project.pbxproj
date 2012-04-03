@@ -33,6 +33,7 @@
 		E21A256C152412870055DDD7 /* QuadCurveDefaultDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E21A256B152412870055DDD7 /* QuadCurveDefaultDataSource.m */; };
 		E2373EB41526D1B200EE06ED /* QuadCurveLinearDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = E2373EB11526D1B200EE06ED /* QuadCurveLinearDirector.m */; };
 		E2373EB51526D1B200EE06ED /* QuadCurveRadialDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = E2373EB31526D1B200EE06ED /* QuadCurveRadialDirector.m */; };
+		E256A451152AB8C4002A98C0 /* QuadCurveTiltAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E256A450152AB8C4002A98C0 /* QuadCurveTiltAnimation.m */; };
 		E28E900015239AF7008C936B /* AwesomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28E8FFF15239AF7008C936B /* AwesomeViewController.m */; };
 		E2A899B81522A415004D5561 /* QuadCurveBlowupAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B31522A415004D5561 /* QuadCurveBlowupAnimation.m */; };
 		E2A899B91522A415004D5561 /* QuadCurveItemCloseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A899B51522A415004D5561 /* QuadCurveItemCloseAnimation.m */; };
@@ -79,6 +80,8 @@
 		E2373EB21526D1B200EE06ED /* QuadCurveRadialDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveRadialDirector.h; sourceTree = "<group>"; };
 		E2373EB31526D1B200EE06ED /* QuadCurveRadialDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveRadialDirector.m; sourceTree = "<group>"; };
 		E2373EC01526E14C00EE06ED /* QuadCurveMotionDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveMotionDirector.h; sourceTree = "<group>"; };
+		E256A44F152AB8C4002A98C0 /* QuadCurveTiltAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveTiltAnimation.h; sourceTree = "<group>"; };
+		E256A450152AB8C4002A98C0 /* QuadCurveTiltAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveTiltAnimation.m; sourceTree = "<group>"; };
 		E28E8FFE15239AF7008C936B /* AwesomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeViewController.h; sourceTree = "<group>"; };
 		E28E8FFF15239AF7008C936B /* AwesomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeViewController.m; sourceTree = "<group>"; };
 		E2A899B11522A415004D5561 /* QuadCurveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveAnimation.h; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				E2A899B51522A415004D5561 /* QuadCurveItemCloseAnimation.m */,
 				E2A899B61522A415004D5561 /* QuadCurveItemExpandAnimation.h */,
 				E2A899B71522A415004D5561 /* QuadCurveItemExpandAnimation.m */,
+				E256A44F152AB8C4002A98C0 /* QuadCurveTiltAnimation.h */,
+				E256A450152AB8C4002A98C0 /* QuadCurveTiltAnimation.m */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				E21A256C152412870055DDD7 /* QuadCurveDefaultDataSource.m in Sources */,
 				E2373EB41526D1B200EE06ED /* QuadCurveLinearDirector.m in Sources */,
 				E2373EB51526D1B200EE06ED /* QuadCurveRadialDirector.m in Sources */,
+				E256A451152AB8C4002A98C0 /* QuadCurveTiltAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
