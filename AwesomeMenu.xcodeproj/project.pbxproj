@@ -21,14 +21,14 @@
 		5C0364A81488A5D4000CE00F /* icon-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0364951488A5D4000CE00F /* icon-plus@2x.png */; };
 		5C0364A91488A5D4000CE00F /* icon-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0364961488A5D4000CE00F /* icon-star.png */; };
 		5C0364AA1488A5D4000CE00F /* icon-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0364971488A5D4000CE00F /* icon-star@2x.png */; };
-		5C0364AB1488A5D4000CE00F /* QuadCurveMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C03649A1488A5D4000CE00F /* QuadCurveMenu.m */; };
-		5C0364AC1488A5D4000CE00F /* QuadCurveMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C03649C1488A5D4000CE00F /* QuadCurveMenuItem.m */; };
 		5C3FF3641486564E0098EE93 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3FF3631486564E0098EE93 /* UIKit.framework */; };
 		5C3FF3661486564E0098EE93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3FF3651486564E0098EE93 /* Foundation.framework */; };
 		5C3FF3681486564E0098EE93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3FF3671486564E0098EE93 /* CoreGraphics.framework */; };
 		5C3FF36E1486564E0098EE93 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C3FF36C1486564E0098EE93 /* InfoPlist.strings */; };
 		5C3FF3701486564E0098EE93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FF36F1486564E0098EE93 /* main.m */; };
 		5C3FF3741486564E0098EE93 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3FF3731486564E0098EE93 /* AppDelegate.m */; };
+		5C5949CA153ACC510023B034 /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5949C7153ACC510023B034 /* AwesomeMenu.m */; };
+		5C5949CB153ACC510023B034 /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5949C9153ACC510023B034 /* AwesomeMenuItem.m */; };
 		5C93DC61148673F2003029CA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C93DC60148673F2003029CA /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +47,6 @@
 		5C0364951488A5D4000CE00F /* icon-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-plus@2x.png"; sourceTree = "<group>"; };
 		5C0364961488A5D4000CE00F /* icon-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star.png"; sourceTree = "<group>"; };
 		5C0364971488A5D4000CE00F /* icon-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star@2x.png"; sourceTree = "<group>"; };
-		5C0364991488A5D4000CE00F /* QuadCurveMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveMenu.h; sourceTree = "<group>"; };
-		5C03649A1488A5D4000CE00F /* QuadCurveMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveMenu.m; sourceTree = "<group>"; };
-		5C03649B1488A5D4000CE00F /* QuadCurveMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadCurveMenuItem.h; sourceTree = "<group>"; };
-		5C03649C1488A5D4000CE00F /* QuadCurveMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuadCurveMenuItem.m; sourceTree = "<group>"; };
 		5C3FF35F1486564E0098EE93 /* AwesomeMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3FF3631486564E0098EE93 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C3FF3651486564E0098EE93 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +57,10 @@
 		5C3FF3711486564E0098EE93 /* AwesomeMenu-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeMenu-Prefix.pch"; sourceTree = "<group>"; };
 		5C3FF3721486564E0098EE93 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5C3FF3731486564E0098EE93 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5C5949C6153ACC510023B034 /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
+		5C5949C7153ACC510023B034 /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
+		5C5949C8153ACC510023B034 /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
+		5C5949C9153ACC510023B034 /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		5C93DC60148673F2003029CA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -100,17 +100,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		5C0364981488A5D4000CE00F /* QuadCurveMenu */ = {
-			isa = PBXGroup;
-			children = (
-				5C0364991488A5D4000CE00F /* QuadCurveMenu.h */,
-				5C03649A1488A5D4000CE00F /* QuadCurveMenu.m */,
-				5C03649B1488A5D4000CE00F /* QuadCurveMenuItem.h */,
-				5C03649C1488A5D4000CE00F /* QuadCurveMenuItem.m */,
-			);
-			path = QuadCurveMenu;
-			sourceTree = "<group>";
-		};
 		5C3FF3541486564E0098EE93 = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				5C0364891488A5D4000CE00F /* Images */,
-				5C0364981488A5D4000CE00F /* QuadCurveMenu */,
+				5C5949C5153ACC510023B034 /* AwesomeMenu */,
 				5C3FF3721486564E0098EE93 /* AppDelegate.h */,
 				5C3FF3731486564E0098EE93 /* AppDelegate.m */,
 				5C3FF36A1486564E0098EE93 /* Supporting Files */,
@@ -160,6 +149,17 @@
 				5C3FF3711486564E0098EE93 /* AwesomeMenu-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5C5949C5153ACC510023B034 /* AwesomeMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5C5949C6153ACC510023B034 /* AwesomeMenu.h */,
+				5C5949C7153ACC510023B034 /* AwesomeMenu.m */,
+				5C5949C8153ACC510023B034 /* AwesomeMenuItem.h */,
+				5C5949C9153ACC510023B034 /* AwesomeMenuItem.m */,
+			);
+			path = AwesomeMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +239,8 @@
 			files = (
 				5C3FF3701486564E0098EE93 /* main.m in Sources */,
 				5C3FF3741486564E0098EE93 /* AppDelegate.m in Sources */,
-				5C0364AB1488A5D4000CE00F /* QuadCurveMenu.m in Sources */,
-				5C0364AC1488A5D4000CE00F /* QuadCurveMenuItem.m in Sources */,
+				5C5949CA153ACC510023B034 /* AwesomeMenu.m in Sources */,
+				5C5949CB153ACC510023B034 /* AwesomeMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
