@@ -41,6 +41,8 @@
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
 
+@property (nonatomic, readonly) BOOL animating;
+
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
 @end
 

@@ -43,6 +43,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @synthesize expanding = _expanding;
 @synthesize delegate = _delegate;
 @synthesize menusArray = _menusArray;
+@synthesize animating = _animating;
 
 #pragma mark - initialization & cleaning up
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray
@@ -145,13 +146,15 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.expanding = !self.isExpanding;
+    if (!self.animating) {
+        self.expanding = !self.isExpanding;
+    }
 }
 
 #pragma mark - AwesomeMenuItem delegates
 - (void)AwesomeMenuItemTouchesBegan:(AwesomeMenuItem *)item
 {
-    if (item == _addButton) 
+    if (item == _addButton && !self.animating) 
     {
         self.expanding = !self.isExpanding;
     }
@@ -159,14 +162,19 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item
 {
     // exclude the "add" button
-    if (item == _addButton) 
+    if (item == _addButton || self.animating) 
     {
         return;
     }
-    // blowup the selected menu button
+    
+    _animating = YES;
+    
+    // blowup the selected menu button 
     CAAnimationGroup *blowup = [self _blowupAnimationAtPoint:item.center];
+    blowup.delegate = self;
     [item.layer addAnimation:blowup forKey:@"blowup"];
     item.center = item.startPoint;
+    
     
     // shrink other menu buttons
     for (int i = 0; i < [_menusArray count]; i ++)
@@ -241,6 +249,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 - (void)setExpanding:(BOOL)expanding
 {
+    if (self.animating) {
+        NSLog(@"*WARNING: Can not change expanding status while animating.");
+        return;
+    }
 	
 	if (expanding) {
 		[self _setMenu];
@@ -257,12 +269,15 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     // expand or close animation
     if (!_timer) 
     {
+        _animating = YES;
+        
         _flag = self.isExpanding ? 0 : ([_menusArray count] - 1);
         SEL selector = self.isExpanding ? @selector(_expand) : @selector(_close);
 
         // Adding timer to runloop to make sure UI event won't block the timer from firing
         _timer = [[NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES] retain];
         [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        
     }
 }
 #pragma mark - private methods
@@ -302,6 +317,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+
+    // Last animation
+    if (_flag == [_menusArray count] - 1) {
+        animationgroup.delegate = self;
+    }
+    
     [item.layer addAnimation:animationgroup forKey:@"Expand"];
     item.center = item.endPoint;
     
@@ -344,9 +365,17 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
+    // Last animation
+    if (_flag == 0) {
+        animationgroup.delegate = self;
+    }
+    
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
+    
     _flag --;
+    
 }
 
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p
@@ -387,6 +416,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.fillMode = kCAFillModeForwards;
     
     return animationgroup;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark CAAnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
+    _animating = NO;
 }
 
 
