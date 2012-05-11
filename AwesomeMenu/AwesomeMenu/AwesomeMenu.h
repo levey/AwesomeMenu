@@ -40,6 +40,8 @@
 @property (nonatomic, assign) CGFloat menuWholeAngle;
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
+@property (nonatomic, assign) NSTimeInterval expandDuration;
+@property (nonatomic, assign) NSTimeInterval closeDuration;
 
 @property (nonatomic, readonly) BOOL animating;
 
