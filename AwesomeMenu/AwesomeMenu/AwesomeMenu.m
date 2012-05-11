@@ -33,6 +33,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 @interface AwesomeMenu ()
 
+@property (nonatomic, retain) NSInvocation *delayedAction;
+
 - (void)_expand;
 - (void)_close;
 - (void)_setMenu;
@@ -50,6 +52,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @synthesize delegate = _delegate;
 @synthesize menusArray = _menusArray;
 @synthesize animating = _animating;
+@synthesize delayedAction = _delayedAction;
 
 #pragma mark - initialization & cleaning up
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray
@@ -86,6 +89,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 - (void)dealloc
 {
+  self.delayedAction = nil;
   [_addButton release];
   [_menusArray release];
   [super dealloc];
@@ -162,16 +166,36 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 #pragma mark - AwesomeMenuItem delegates
 - (void)AwesomeMenuItemTouchesBegan:(AwesomeMenuItem *)item
 {
-  if (item == _addButton && !self.animating) 
+  if (item == _addButton) 
   {
-    self.expanding = !self.isExpanding;
+    if (!self.animating) {
+      self.expanding = !self.isExpanding;
+    }
+    else{
+      NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                                  [self methodSignatureForSelector:@selector(AwesomeMenuItemTouchesBegan:)]];
+      invocation.target = self;
+      invocation.selector = @selector(AwesomeMenuItemTouchesBegan:);
+      [invocation setArgument:&item atIndex:2];
+      self.delayedAction = invocation;
+    }
   }
 }
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item
 {
   // exclude the "add" button
-  if (item == _addButton || self.animating) 
+  if (item == _addButton) 
   {
+    return;
+  }
+  
+  if (self.animating) {
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
+                                [self methodSignatureForSelector:@selector(AwesomeMenuItemTouchesEnd:)]];
+    invocation.target = self;
+    invocation.selector = @selector(AwesomeMenuItemTouchesEnd:);
+    [invocation setArgument:&item atIndex:2];
+    self.delayedAction = invocation;
     return;
   }
   
@@ -447,6 +471,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
   _animating = NO;
+  if (self.delayedAction) {
+    [self.delayedAction invoke];
+    self.delayedAction = nil;
+  }
 }
 
 
