@@ -117,7 +117,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 	return _addButton.contentImageView.image;
 }
 
-
 - (void)setHighlightedContentImage:(UIImage *)highlightedContentImage {
 	_addButton.contentImageView.highlightedImage = highlightedContentImage;
 }
@@ -131,6 +130,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 #pragma mark - UIView's methods
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
+    // if the menu is animating, prevent touches
+    if (_isAnimating) 
+    {
+        return NO;
+    }
     // if the menu state is expanding, everywhere can be touch
     // otherwise, only the add button are can be touch
     if (YES == _expanding) 
@@ -241,7 +245,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 - (void)setExpanding:(BOOL)expanding
 {
-	
 	if (expanding) {
 		[self _setMenu];
 	}
@@ -263,6 +266,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         // Adding timer to runloop to make sure UI event won't block the timer from firing
         _timer = [[NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES] retain];
         [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        _isAnimating = YES;
     }
 }
 #pragma mark - private methods
@@ -271,6 +275,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 	
     if (_flag == [_menusArray count])
     {
+        _isAnimating = NO;
         [_timer invalidate];
         [_timer release];
         _timer = nil;
@@ -313,6 +318,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     if (_flag == -1)
     {
+        _isAnimating = NO;
         [_timer invalidate];
         [_timer release];
         _timer = nil;
