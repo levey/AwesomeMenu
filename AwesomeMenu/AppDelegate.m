@@ -87,6 +87,8 @@
 	menu.endRadius = 100.0f;
 	menu.nearRadius = 50.0f;
 	*/
+    
+    menu.backgroundColor = [UIColor blueColor];
 	
     menu.delegate = self;
     [self.window addSubview:menu];
