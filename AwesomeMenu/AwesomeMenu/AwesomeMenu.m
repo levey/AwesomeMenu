@@ -50,18 +50,19 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        self.menusArray = aMenusArray;
+        NSUInteger menuCount = [self.menusArray count];
 		
 		self.nearRadius = kAwesomeMenuDefaultNearRadius;
 		self.endRadius = kAwesomeMenuDefaultEndRadius;
 		self.farRadius = kAwesomeMenuDefaultFarRadius;
 		self.timeOffset = kAwesomeMenuDefaultTimeOffset;
 		self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
-		self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
+		self.menuWholeAngle = (menuCount > 1 && kAwesomeMenuDefaultMenuWholeAngle >= 2*M_PI) ? (2*M_PI*(menuCount-1)/menuCount) : kAwesomeMenuDefaultMenuWholeAngle;
 		self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         
-        self.menusArray = aMenusArray;
         
         // add the "Add" Button.
         _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
@@ -227,11 +228,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = startPoint;
-        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf(i * menuWholeAngle / count), startPoint.y - endRadius * cosf(i * menuWholeAngle / count));
+        CGPoint endPoint = CGPointMake(startPoint.x + endRadius * sinf(i * menuWholeAngle / MAX(1, count - 1)), startPoint.y - endRadius * cosf(i * menuWholeAngle / MAX(1, count - 1)));
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
-        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(i * menuWholeAngle / count), startPoint.y - nearRadius * cosf(i * menuWholeAngle / count));
+        CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(i * menuWholeAngle / MAX(1, count - 1)), startPoint.y - nearRadius * cosf(i * menuWholeAngle / MAX(1, count - 1)));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
-        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf(i * menuWholeAngle / count), startPoint.y - farRadius * cosf(i * menuWholeAngle / count));
+        CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf(i * menuWholeAngle / MAX(1, count - 1)), startPoint.y - farRadius * cosf(i * menuWholeAngle / MAX(1, count - 1)));
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
         item.center = item.startPoint;
         item.delegate = self;
