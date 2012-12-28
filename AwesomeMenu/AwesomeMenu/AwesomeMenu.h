@@ -21,6 +21,7 @@
     
     id<AwesomeMenuDelegate> _delegate;
     BOOL _isAnimating;
+    BOOL _centerButtonRotationEnabled;
 }
 @property (nonatomic, copy) NSArray *menusArray;
 @property (nonatomic, getter = isExpanding) BOOL expanding;
@@ -40,6 +41,7 @@
 @property (nonatomic, assign) CGFloat menuWholeAngle;
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
+@property (nonatomic, assign) BOOL centerButtonRotationEnabled;
 
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
 @end
