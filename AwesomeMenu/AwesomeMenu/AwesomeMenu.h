@@ -46,4 +46,7 @@
 
 @protocol AwesomeMenuDelegate <NSObject>
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx;
+@optional
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu;
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu;
 @end
