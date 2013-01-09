@@ -307,6 +307,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.delegate = self;
+    if(_flag == [_menusArray count] - 1){
+        [animationgroup setValue:@"firstAnimation" forKey:@"id"];
+    }
+    
     [item.layer addAnimation:animationgroup forKey:@"Expand"];
     item.center = item.endPoint;
     
@@ -350,11 +355,28 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.delegate = self;
+    if(_flag == 0){
+        [animationgroup setValue:@"lastAnimation" forKey:@"id"];
+    }
+    
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
+
     _flag --;
 }
-
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if([[anim valueForKey:@"id"] isEqual:@"lastAnimation"]) {
+        if(self.delegate && [self.delegate respondsToSelector:@selector(AwesomeMenuDidFinishAnimationClose:)]){
+            [self.delegate AwesomeMenuDidFinishAnimationClose:self];
+        }
+    }
+    if([[anim valueForKey:@"id"] isEqual:@"firstAnimation"]) {
+        if(self.delegate && [self.delegate respondsToSelector:@selector(AwesomeMenuDidFinishAnimationOpen:)]){
+            [self.delegate AwesomeMenuDidFinishAnimationOpen:self];
+        }
+    }
+}
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
