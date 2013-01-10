@@ -105,5 +105,10 @@
 {
     NSLog(@"Select the index : %d",idx);
 }
-
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
+    NSLog(@"Menu was closed!");
+}
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
+    NSLog(@"Menu is open!");
+}
 @end
