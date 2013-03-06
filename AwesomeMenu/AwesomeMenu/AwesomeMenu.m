@@ -78,12 +78,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     return self;
 }
 
-- (void)dealloc
-{
-    [_addButton release];
-    [_menusArray release];
-    [super dealloc];
-}
 
 #pragma mark - getters & setters
 
@@ -210,7 +204,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     {
         return;
     }
-    [_menusArray release];
     _menusArray = [aMenusArray copy];
     
     
@@ -270,7 +263,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         SEL selector = self.isExpanding ? @selector(_expand) : @selector(_close);
 
         // Adding timer to runloop to make sure UI event won't block the timer from firing
-        _timer = [[NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES] retain];
+        _timer = [NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
         _isAnimating = YES;
     }
@@ -283,7 +276,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     {
         _isAnimating = NO;
         [_timer invalidate];
-        [_timer release];
         _timer = nil;
         return;
     }
@@ -313,6 +305,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.delegate = self;
+    if(_flag == [_menusArray count] - 1){
+        [animationgroup setValue:@"firstAnimation" forKey:@"id"];
+    }
+    
     [item.layer addAnimation:animationgroup forKey:@"Expand"];
     item.center = item.endPoint;
     
@@ -326,7 +323,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     {
         _isAnimating = NO;
         [_timer invalidate];
-        [_timer release];
         _timer = nil;
         return;
     }
@@ -356,11 +352,28 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.duration = 0.5f;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.delegate = self;
+    if(_flag == 0){
+        [animationgroup setValue:@"lastAnimation" forKey:@"id"];
+    }
+    
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
+
     _flag --;
 }
-
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if([[anim valueForKey:@"id"] isEqual:@"lastAnimation"]) {
+        if(self.delegate && [self.delegate respondsToSelector:@selector(AwesomeMenuDidFinishAnimationClose:)]){
+            [self.delegate AwesomeMenuDidFinishAnimationClose:self];
+        }
+    }
+    if([[anim valueForKey:@"id"] isEqual:@"firstAnimation"]) {
+        if(self.delegate && [self.delegate respondsToSelector:@selector(AwesomeMenuDidFinishAnimationOpen:)]){
+            [self.delegate AwesomeMenuDidFinishAnimationOpen:self];
+        }
+    }
+}
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
