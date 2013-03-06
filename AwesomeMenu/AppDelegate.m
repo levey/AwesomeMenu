@@ -74,7 +74,7 @@
 	menu.nearRadius = 50.0f;
 	*/
     
-    menu.startPoint = CGPointMake(120.0, 240.0);
+    //menu.startPoint = CGPointMake(120.0, 240.0);
 	
     menu.delegate = self;
     [self.window addSubview:menu];
