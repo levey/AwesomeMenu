@@ -18,17 +18,17 @@
     CGPoint _nearPoint; // near
     CGPoint _farPoint; // far
     
-    id<AwesomeMenuItemDelegate> _delegate;
+    id<AwesomeMenuItemDelegate> __weak _delegate;
 }
 
-@property (nonatomic, retain, readonly) UIImageView *contentImageView;
+@property (nonatomic, strong, readonly) UIImageView *contentImageView;
 
 @property (nonatomic) CGPoint startPoint;
 @property (nonatomic) CGPoint endPoint;
 @property (nonatomic) CGPoint nearPoint;
 @property (nonatomic) CGPoint farPoint;
 
-@property (nonatomic, assign) id<AwesomeMenuItemDelegate> delegate;
+@property (nonatomic, weak) id<AwesomeMenuItemDelegate> delegate;
 
 - (id)initWithImage:(UIImage *)img 
    highlightedImage:(UIImage *)himg
