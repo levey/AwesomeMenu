@@ -45,7 +45,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @synthesize menusArray = _menusArray;
 
 #pragma mark - initialization & cleaning up
-- (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray
+- (id)initWithFrame:(CGRect)frame AndStartItem:(AwesomeMenuItem *)startItem AndMenus:(NSArray *)aMenusArray
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -63,11 +63,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         
         self.menusArray = aMenusArray;
         
-        // add the "Add" Button.
-        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"] 
-                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
-                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+        // assign startItem to "Add" Button.
+        _addButton = startItem;
         _addButton.delegate = self;
         _addButton.center = self.startPoint;
         [self addSubview:_addButton];

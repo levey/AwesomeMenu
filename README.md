@@ -1,4 +1,4 @@
-### DO NOT USE IT TO COPY PATH! 
+### DO NOT USE IT TO COPY PATH!
 
 ---
 
@@ -15,17 +15,23 @@ Create the menu by setting up the menu items:
 	UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
 	UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed 
-                                                                   ContentImage:starImage 
+                                                               highlightedImage:storyMenuItemImagePressed
+                                                                   ContentImage:starImage
                                                         highlightedContentImage:nil];
 	AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                               highlightedImage:storyMenuItemImagePressed 
-                                                                   ContentImage:starImage 
+                                                               highlightedImage:storyMenuItemImagePressed
+                                                                   ContentImage:starImage
                                                         highlightedContentImage:nil];
+
+  // the start item (similar to add button of Path)
+  AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
+                                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
+                                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"]
+                                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
 
 Then, setup the menu and options:
 
-	AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds [NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
+	AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds AndStartItem:startItem AndMenus:[NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
 	menu.delegate = self;
 	[self.window addSubview:menu];
 
@@ -58,9 +64,9 @@ to set the distance between the "Add" button and Menu Items:
 
 ---
 
-Twitter: [@LeveyZhu](https://twitter.com/#!/LeveyZhu) 
+Twitter: [@LeveyZhu](https://twitter.com/#!/LeveyZhu)
 
-Sina Weibo: [@LeveyZhu](http://weibo.com/leveyzhu) 
+Sina Weibo: [@LeveyZhu](http://weibo.com/leveyzhu)
 
 Thanks for [pashields](https://github.com/pashields) providing the [youtube demo](http://www.youtube.com/watch?v=vddaYMtETjo) :)
 
