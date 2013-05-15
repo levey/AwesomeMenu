@@ -22,8 +22,8 @@ Create the menu by setting up the menu items:
                                                                highlightedImage:storyMenuItemImagePressed
                                                                    ContentImage:starImage
                                                         highlightedContentImage:nil];
-  // the start item (similar to add button of Path)
-  AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
+	// the start item, similar to "add" button of Path
+	AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
                                                        highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
                                                            ContentImage:[UIImage imageNamed:@"icon-plus.png"]
                                                 highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
