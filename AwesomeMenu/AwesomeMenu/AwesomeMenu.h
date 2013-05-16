@@ -13,15 +13,7 @@
 
 
 @interface AwesomeMenu : UIView <AwesomeMenuItemDelegate>
-{
-    NSArray *_menusArray;
-    int _flag;
-    NSTimer *_timer;
-    AwesomeMenuItem *_addButton;
-    
-    id<AwesomeMenuDelegate> __weak _delegate;
-    BOOL _isAnimating;
-}
+
 @property (nonatomic, copy) NSArray *menusArray;
 @property (nonatomic, getter = isExpanding) BOOL expanding;
 @property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
@@ -42,12 +34,13 @@
 @property (nonatomic, assign) CGFloat closeRotation;
 @property (nonatomic, assign) CGFloat animationDuration;
 
-- (id)initWithFrame:(CGRect)frame AndStartItem:(AwesomeMenuItem*)startItem AndMenus:(NSArray *)aMenusArray;
+- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray;
+
 @end
 
 @protocol AwesomeMenuDelegate <NSObject>
-- (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx;
+- (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx;
 @optional
-- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu;
-- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu;
+- (void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu;
+- (void)awesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu;
 @end

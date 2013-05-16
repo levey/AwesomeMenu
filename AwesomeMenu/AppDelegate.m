@@ -22,7 +22,9 @@
     UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
     
     UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
-
+    
+    // Default Menu
+ 
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage 
@@ -67,23 +69,54 @@
                                                            ContentImage:[UIImage imageNamed:@"icon-plus.png"]
                                                 highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
     
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds AndStartItem:startItem AndMenus:menus];
-    
-	// customize menu
-	/*
-	menu.rotateAngle = M_PI/3;
-	menu.menuWholeAngle = M_PI;
-	menu.timeOffset = 0.2f;
-	menu.farRadius = 180.0f;
-	menu.endRadius = 100.0f;
-	menu.nearRadius = 50.0f;
-	*/
-    
-    //menu.startPoint = CGPointMake(120.0, 240.0);
-	
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem optionMenus:menus];
     menu.delegate = self;
-    [self.window addSubview:menu];
     
+    
+
+    /* Path-like customization
+
+     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+                                                           highlightedImage:storyMenuItemImagePressed
+                                                               ContentImage:starImage
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+                                                           highlightedImage:storyMenuItemImagePressed
+                                                               ContentImage:starImage
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+                                                           highlightedImage:storyMenuItemImagePressed
+                                                               ContentImage:starImage
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+                                                           highlightedImage:storyMenuItemImagePressed
+                                                               ContentImage:starImage
+                                                    highlightedContentImage:nil];
+    AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+                                                           highlightedImage:storyMenuItemImagePressed
+                                                               ContentImage:starImage
+                                                    highlightedContentImage:nil];
+     
+     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
+    
+    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
+                                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
+                                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"]
+                                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+    
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem optionMenus:menus];    
+    menu.delegate = self;
+    
+	menu.menuWholeAngle = M_PI_2;
+	menu.farRadius = 110.0f;
+	menu.endRadius = 100.0f;
+	menu.nearRadius = 90.0f;
+    menu.animationDuration = 0.3f;
+    menu.startPoint = CGPointMake(50.0, 410.0);
+     
+     */
+    
+    [self.window addSubview:menu];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -93,14 +126,14 @@
 /* ⬇⬇⬇⬇⬇⬇ GET RESPONSE OF MENU ⬇⬇⬇⬇⬇⬇ */
 /* ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇ */
 
-- (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+- (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     NSLog(@"Select the index : %d",idx);
 }
-- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
+- (void)awesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
     NSLog(@"Menu was closed!");
 }
-- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
+- (void)awesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
     NSLog(@"Menu is open!");
 }
 @end

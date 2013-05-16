@@ -30,7 +30,7 @@ Create the menu by setting up the menu items:
 
 Then, setup the menu and options:
 
-	AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds AndStartItem:startItem AndMenus:[NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
+	AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem optionMenus:[NSArray arrayWithObjects:starMenuItem1, starMenuItem2]];
 	menu.delegate = self;
 	[self.window addSubview:menu];
 
