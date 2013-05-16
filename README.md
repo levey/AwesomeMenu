@@ -61,6 +61,10 @@ to set the distance between the "Add" button and Menu Items:
 
 	menu.endRadius = 120.0f;
 
+to disable center button rotation:
+
+  menu.centerButtonRotationEnabled = NO;
+
 ---
 
 Twitter: [@LeveyZhu](https://twitter.com/#!/LeveyZhu)

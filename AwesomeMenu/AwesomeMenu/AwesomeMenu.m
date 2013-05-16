@@ -19,6 +19,7 @@ static CGFloat const kAwesomeMenuDefaultRotateAngle = 0.0;
 static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI * 2;
 static CGFloat const kAwesomeMenuDefaultExpandRotation = M_PI;
 static CGFloat const kAwesomeMenuDefaultCloseRotation = M_PI * 2;
+static CGFloat const kAwesomeMenuDefaultCenterButtonRotationEnabled = YES;
 
 
 static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float angle)
@@ -43,6 +44,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @synthesize expanding = _expanding;
 @synthesize delegate = _delegate;
 @synthesize menusArray = _menusArray;
+@synthesize centerButtonRotationEnabled = _centerButtonRotationEnabled;
 
 #pragma mark - initialization & cleaning up
 - (id)initWithFrame:(CGRect)frame AndStartItem:(AwesomeMenuItem *)startItem AndMenus:(NSArray *)aMenusArray
@@ -51,6 +53,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     if (self) {
         self.backgroundColor = [UIColor clearColor];
 		
+		self.centerButtonRotationEnabled = kAwesomeMenuDefaultCenterButtonRotationEnabled;
 		self.nearRadius = kAwesomeMenuDefaultNearRadius;
 		self.endRadius = kAwesomeMenuDefaultEndRadius;
 		self.farRadius = kAwesomeMenuDefaultFarRadius;
@@ -178,11 +181,13 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = NO;
     
     // rotate "add" button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
-        _addButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
-    
+    if(_centerButtonRotationEnabled) {
+      float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+      [UIView animateWithDuration:0.2f animations:^{
+          _addButton.transform = CGAffineTransformMakeRotation(angle);
+      }];
+    }
+  
     if ([_delegate respondsToSelector:@selector(AwesomeMenu:didSelectIndex:)])
     {
         [_delegate AwesomeMenu:self didSelectIndex:item.tag - 1000];
@@ -240,13 +245,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 	}
 	
     _expanding = expanding;    
-    
-    // rotate add button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
-        _addButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
-    
+    if(_centerButtonRotationEnabled) {
+      // rotate add button
+      float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+      [UIView animateWithDuration:0.2f animations:^{
+          _addButton.transform = CGAffineTransformMakeRotation(angle);
+      }];
+    }
+  
     // expand or close animation
     if (!_timer) 
     {
