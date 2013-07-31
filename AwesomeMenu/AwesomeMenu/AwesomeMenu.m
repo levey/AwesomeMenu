@@ -221,13 +221,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 
 - (void)_setMenu {
-	int count = [_menusArray count];
+    int count = [_menusArray count];
     for (int i = 0; i < count; i ++)
     {
         AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = startPoint;
-        
+        item.userInteractionEnabled = YES;
+
         // avoid overlap
         if (menuWholeAngle >= M_PI * 2) {
             menuWholeAngle = menuWholeAngle - menuWholeAngle / count;
