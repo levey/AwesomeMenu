@@ -261,7 +261,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
         _startButton.transform = CGAffineTransformMakeRotation(angle);
     }];
-    
+    if(_isAnimating == YES)
+	{
+		[_timer invalidate];
+		_timer = nil;
+	}
     // expand or close animation
     if (!_timer) 
     {
