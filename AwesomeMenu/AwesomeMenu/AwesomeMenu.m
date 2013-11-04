@@ -158,6 +158,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     if (item == _startButton) 
     {
+		[self.delegate awesomeMenuWillStartAnimationOpen:self];
         self.expanding = !self.isExpanding;
     }
 }
@@ -190,7 +191,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     // rotate start button
     float angle = self.isExpanding ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:animationDuration animations:^{
-        _startButton.transform = CGAffineTransformMakeRotation(angle);
+        self->_startButton.transform = CGAffineTransformMakeRotation(angle);
     }];
     
     if ([_delegate respondsToSelector:@selector(awesomeMenu:didSelectIndex:)])
@@ -259,7 +260,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     // rotate add button
     float angle = self.isExpanding ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
-        _startButton.transform = CGAffineTransformMakeRotation(angle);
+        self->_startButton.transform = CGAffineTransformMakeRotation(angle);
     }];
     
     // expand or close animation
