@@ -158,6 +158,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     if (item == _startButton) 
     {
+		[self.delegate awesomeMenuWillStartAnimationOpen:self];
         self.expanding = !self.isExpanding;
     }
 }
