@@ -40,7 +40,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 @implementation AwesomeMenu {
     NSArray *_menusArray;
-    int _flag;
+    NSUInteger _flag;
     NSTimer *_timer;
     AwesomeMenuItem *_startButton;
     
@@ -221,7 +221,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 
 - (void)_setMenu {
-	int count = [_menusArray count];
+	NSUInteger count = [_menusArray count];
     for (int i = 0; i < count; i ++)
     {
         AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
