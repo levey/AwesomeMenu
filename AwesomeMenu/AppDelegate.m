@@ -72,6 +72,8 @@
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem optionMenus:menus];
     menu.delegate = self;
     
+    // fade enable
+    // menu.fadeBackgroundEffected = YES;
     
 
     /* Path-like customization

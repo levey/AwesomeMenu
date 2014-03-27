@@ -34,6 +34,8 @@
 @property (nonatomic, assign) CGFloat closeRotation;
 @property (nonatomic, assign) CGFloat animationDuration;
 
+@property (nonatomic, assign) BOOL fadeBackgroundEffected;
+
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray;
 
 @end
