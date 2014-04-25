@@ -252,10 +252,16 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
 	if (expanding) {
 		[self _setMenu];
+        if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateOpen:)]){
+            [self.delegate awesomeMenuWillAnimateOpen:self];
+        }
 	}
 	
-    _expanding = expanding;    
-    
+    _expanding = expanding;
+    if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateClose:)]){
+        [self.delegate awesomeMenuWillAnimateClose:self];
+    }
+
     // rotate add button
     float angle = self.isExpanding ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
