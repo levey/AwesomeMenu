@@ -33,6 +33,7 @@
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
 @property (nonatomic, assign) CGFloat animationDuration;
+@property (nonatomic, assign) BOOL    rotateAddButton;
 
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray;
 

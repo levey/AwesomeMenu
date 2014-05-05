@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F845190-413F-4A06-BB74-B670E9EF4657</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AwesomeMenu</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</key>
+		<string>https://github.com/pablosproject/AwesomeMenu.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AwesomeMenu.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pablosproject/AwesomeMenu.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AwesomeMenu</string>
+		</dict>
+	</array>
+</dict>
+</plist>
