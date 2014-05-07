@@ -48,7 +48,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     BOOL _isAnimating;
 }
 
-@synthesize nearRadius, endRadius, farRadius, timeOffset, rotateAngle, menuWholeAngle, startPoint, expandRotation, closeRotation, animationDuration;
+@synthesize nearRadius, endRadius, farRadius, timeOffset, rotateAngle, menuWholeAngle, startPoint, expandRotation, closeRotation, animationDuration, rotateAddButton;
 @synthesize expanding = _expanding;
 @synthesize delegate = _delegate;
 @synthesize menusArray = _menusArray;
@@ -70,6 +70,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
+        self.rotateAddButton = YES;
         
         self.menusArray = aMenusArray;
         
@@ -263,10 +264,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
 
     // rotate add button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
-    [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
-        _startButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
+    if (self.rotateAddButton) {
+        float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+        [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
+            _startButton.transform = CGAffineTransformMakeRotation(angle);
+        }];
+    }
     
     // expand or close animation
     if (!_timer) 
