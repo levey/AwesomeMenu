@@ -30,6 +30,10 @@
 @property (nonatomic, assign) CGFloat timeOffset;
 @property (nonatomic, assign) CGFloat rotateAngle;
 @property (nonatomic, assign) CGFloat menuWholeAngle;
+
+//add property use line layout
+@property (nonatomic, assign) BOOL menuWholeIsLine;
+
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
 @property (nonatomic, assign) CGFloat animationDuration;
