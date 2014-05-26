@@ -242,9 +242,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         }
         else
         {
-            endPoint = CGPointMake(startPoint.x + endRadius * sinf(menuWholeAngle) * (i / (count - 1.0)), startPoint.y - endRadius * cosf(menuWholeAngle) * (i / (count - 1.0)));
-            nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(menuWholeAngle) * (i / (count - 1.0)), startPoint.y - nearRadius * cosf(menuWholeAngle) * (i / (count - 1.0)));
-            farPoint = CGPointMake(startPoint.x + farRadius * sinf(menuWholeAngle) * (i / (count - 1.0)), startPoint.y - farRadius * cosf(menuWholeAngle) * (i / (count - 1.0)));
+            int index = i+1;
+            endPoint = CGPointMake(startPoint.x + endRadius * sinf(menuWholeAngle) * (index / (float)count), startPoint.y - endRadius * cosf(menuWholeAngle) * (index / (float)count));
+            nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(menuWholeAngle) * (index / (float)count), startPoint.y - nearRadius * cosf(menuWholeAngle) * (index / (float)count));
+            farPoint = CGPointMake(startPoint.x + farRadius * sinf(menuWholeAngle) * (index / (float)count), startPoint.y - farRadius * cosf(menuWholeAngle) * (index / (float)count));
         }
         
         item.endPoint = RotateCGPointAroundCenter(endPoint, startPoint, rotateAngle);
