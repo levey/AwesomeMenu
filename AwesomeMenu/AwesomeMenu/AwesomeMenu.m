@@ -283,6 +283,23 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         _isAnimating = YES;
     }
 }
+
+- (void)hideMenus {
+	int count = [_menusArray count];
+    for (int i = 0; i < count; i ++)
+    {
+        [[_menusArray objectAtIndex:i] setHidden:true];
+    }
+}
+
+- (void)showMenus {
+	int count = [_menusArray count];
+    for (int i = 0; i < count; i ++)
+    {
+        [[_menusArray objectAtIndex:i] setHidden:false];
+    }
+}
+
 #pragma mark - Private methods
 - (void)_expand
 {
