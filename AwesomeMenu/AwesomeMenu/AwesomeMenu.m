@@ -54,9 +54,38 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @synthesize menusArray = _menusArray;
 
 #pragma mark - Initialization & Cleaning up
+
+// for autolayout
+- (id) initWithCoder:(NSCoder*)aDecoder{
+
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+		self.startPoint = CGPointMake(self.bounds.origin.x + (self.bounds.size.width / 2), self.bounds.origin.y + (self.bounds.size.height / 2));
+    }
+    return self;
+}
+
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+}
+
+- (void)awakeFromNib{
+}
+
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray
 {
     self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInit];
+        [self setStartButton:startItem];
+        [self setMenusArray:aMenusArray];
+    }
+    return self;
+}
+
+- (void)commonInit
+{
     if (self) {
         self.backgroundColor = [UIColor clearColor];
 		
@@ -71,16 +100,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
         self.rotateAddButton = YES;
-        
-        self.menusArray = aMenusArray;
-        
-        // assign startItem to "Add" Button.
-        _startButton = startItem;
-        _startButton.delegate = self;
-        _startButton.center = self.startPoint;
-        [self addSubview:_startButton];
     }
-    return self;
 }
 
 
@@ -201,6 +221,15 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 #pragma mark - Instant methods
+- (void)setStartButton:(AwesomeMenuItem *)startItem
+{
+    // assign startItem to "Add" Button.
+    _startButton = startItem;
+    _startButton.delegate = self;
+    _startButton.center = self.startPoint;
+    [self addSubview:_startButton];
+}
+
 - (void)setMenusArray:(NSArray *)aMenusArray
 {	
     if (aMenusArray == _menusArray)
