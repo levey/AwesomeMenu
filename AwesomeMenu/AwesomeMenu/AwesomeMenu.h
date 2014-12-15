@@ -36,6 +36,8 @@
 @property (nonatomic, assign) BOOL    rotateAddButton;
 
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray;
+- (void)hideMenus;
+- (void)showMenus;
 
 @end
 
