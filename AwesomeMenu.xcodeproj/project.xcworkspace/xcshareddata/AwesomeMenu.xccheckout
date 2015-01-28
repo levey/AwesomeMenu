@@ -10,29 +10,29 @@
 	<string>AwesomeMenu</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</key>
-		<string>https://github.com/pablosproject/AwesomeMenu.git</string>
+		<key>08DC04EC29A9EEEB651F68DD1636988CA003BDC9</key>
+		<string>https://github.com/CoderMJLee/AwesomeMenu.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AwesomeMenu.xcodeproj/project.xcworkspace</string>
+	<string>AwesomeMenu.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</key>
+		<key>08DC04EC29A9EEEB651F68DD1636988CA003BDC9</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/pablosproject/AwesomeMenu.git</string>
+	<string>https://github.com/CoderMJLee/AwesomeMenu.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</string>
+	<string>08DC04EC29A9EEEB651F68DD1636988CA003BDC9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4AEBA182-B5BB-4710-8FD5-9C70C2DE8B93</string>
+			<string>08DC04EC29A9EEEB651F68DD1636988CA003BDC9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AwesomeMenu</string>
 		</dict>
