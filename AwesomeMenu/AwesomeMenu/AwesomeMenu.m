@@ -251,17 +251,18 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 - (void)setExpanding:(BOOL)expanding
 {
-	if (expanding) {
-		[self _setMenu];
+    if (expanding) {
+        [self _setMenu];
         if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateOpen:)]){
             [self.delegate awesomeMenuWillAnimateOpen:self];
         }
-	}
-	
-    _expanding = expanding;
-    if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateClose:)]){
-        [self.delegate awesomeMenuWillAnimateClose:self];
+    } else {
+        if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateClose:)]){
+            [self.delegate awesomeMenuWillAnimateClose:self];
+        }
     }
+    
+    _expanding = expanding;
 
     // rotate add button
     if (self.rotateAddButton) {
