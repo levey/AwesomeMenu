@@ -39,22 +39,17 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @end
 
 @implementation AwesomeMenu {
-    NSArray *_menusArray;
     NSUInteger _flag;
     NSTimer *_timer;
-    
-    id<AwesomeMenuDelegate> __weak _delegate;
     BOOL _isAnimating;
 }
 
 @synthesize nearRadius, endRadius, farRadius, timeOffset, rotateAngle, menuWholeAngle, startPoint, expandRotation, closeRotation, animationDuration, rotateAddButton;
 @synthesize expanding = _expanding;
-@synthesize delegate = _delegate;
-@synthesize menusArray = _menusArray;
 
 #pragma mark - Initialization & Cleaning up
 
-- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray
+- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem menuItems:(NSArray *)menuItems
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -71,7 +66,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
         self.rotateAddButton = YES;
         
-        self.menusArray = aMenusArray;
+        self.menuItems = menuItems;
         
         // assign startItem to "Add" Button.
         self.startButton = startItem;
@@ -82,6 +77,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray
+{
+    return [self initWithFrame:frame startItem:startItem menuItems:aMenusArray];
+}
 
 #pragma mark - Getters & Setters
 
@@ -176,9 +175,9 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     item.center = item.startPoint;
     
     // shrink other menu buttons
-    for (int i = 0; i < [_menusArray count]; i ++)
+    for (int i = 0; i < [self.menuItems count]; i ++)
     {
-        AwesomeMenuItem *otherItem = [_menusArray objectAtIndex:i];
+        AwesomeMenuItem *otherItem = [self.menuItems objectAtIndex:i];
         CAAnimationGroup *shrink = [self _shrinkAnimationAtPoint:otherItem.center];
         if (otherItem.tag == item.tag) {
             continue;
@@ -203,13 +202,13 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 #pragma mark - Instance methods
 
-- (void)setMenusArray:(NSArray *)aMenusArray
+- (void)setMenuItems:(NSArray *)menuItems
 {	
-    if (aMenusArray == _menusArray)
+    if (menuItems == _menuItems)
     {
         return;
     }
-    _menusArray = [aMenusArray copy];
+    _menuItems = [menuItems copy];
     
     
     // clean subviews
@@ -223,10 +222,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 - (void)_setMenu {
-	NSUInteger count = [_menusArray count];
+	NSUInteger count = [self.menuItems count];
     for (int i = 0; i < count; i ++)
     {
-        AwesomeMenuItem *item = [_menusArray objectAtIndex:i];
+        AwesomeMenuItem *item = [self.menuItems objectAtIndex:i];
         item.tag = 1000 + i;
         item.startPoint = startPoint;
         
@@ -275,7 +274,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     // expand or close animation
     if (!_timer) 
     {
-        _flag = self.isExpanding ? 0 : ([_menusArray count] - 1);
+        _flag = self.isExpanding ? 0 : ([self.menuItems count] - 1);
         SEL selector = self.isExpanding ? @selector(_expand) : @selector(_close);
 
         // Adding timer to runloop to make sure UI event won't block the timer from firing
@@ -290,7 +289,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)_expand
 {
 	
-    if (_flag == [_menusArray count])
+    if (_flag == [self.menuItems count])
     {
         _isAnimating = NO;
         [_timer invalidate];
@@ -324,7 +323,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     animationgroup.delegate = self;
-    if(_flag == [_menusArray count] - 1){
+    if(_flag == [self.menuItems count] - 1){
         [animationgroup setValue:@"firstAnimation" forKey:@"id"];
     }
     

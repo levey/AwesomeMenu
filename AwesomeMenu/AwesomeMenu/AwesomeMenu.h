@@ -11,11 +11,11 @@
 
 @protocol AwesomeMenuDelegate;
 
-
 @interface AwesomeMenu : UIView <AwesomeMenuItemDelegate>
 
-@property (nonatomic, copy) NSArray *menusArray;
+@property (nonatomic, copy) NSArray *menuItems;
 @property (nonatomic, strong) AwesomeMenuItem *startButton;
+
 @property (nonatomic, getter = isExpanding) BOOL expanding;
 @property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
 
@@ -36,7 +36,9 @@
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) BOOL    rotateAddButton;
 
-- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray;
+- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem menuItems:(NSArray *)menuItems;
+
+- (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray DEPRECATED_MSG_ATTRIBUTE("use -initWithFrame:startItem:menuItems: instead.");
 
 @end
 

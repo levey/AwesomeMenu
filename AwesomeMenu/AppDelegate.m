@@ -62,14 +62,14 @@
                                                                    ContentImage:starImage
                                                         highlightedContentImage:nil];
     
-    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, starMenuItem6, starMenuItem7,starMenuItem8,starMenuItem9, nil];
+    NSArray *menuItems = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, starMenuItem6, starMenuItem7,starMenuItem8,starMenuItem9, nil];
     
     AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
                                                        highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
                                                            ContentImage:[UIImage imageNamed:@"icon-plus.png"]
                                                 highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
     
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem optionMenus:menus];
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem menuItems:menuItems];
     menu.delegate = self;
     
     
