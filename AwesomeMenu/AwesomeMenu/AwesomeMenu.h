@@ -40,6 +40,8 @@
 
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray DEPRECATED_MSG_ATTRIBUTE("use -initWithFrame:startItem:menuItems: instead.");
 
+- (AwesomeMenuItem *)menuItemAtIndex:(NSUInteger)index;
+
 @end
 
 @protocol AwesomeMenuDelegate <NSObject>

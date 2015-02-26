@@ -90,7 +90,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     self.startButton.center = aPoint;
 }
 
-#pragma mark - images
+#pragma mark - Images
 
 - (void)setImage:(UIImage *)image {
 	self.startButton.image = image;
@@ -219,6 +219,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
             [v removeFromSuperview];
         }
     }
+}
+
+- (AwesomeMenuItem *)menuItemAtIndex:(NSUInteger)index
+{
+    if (index >= [self.menuItems count]) {
+        return nil;
+    }
+    return self.menuItems[index];
 }
 
 - (void)_setMenu {
