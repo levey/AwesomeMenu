@@ -42,7 +42,7 @@
 
 - (AwesomeMenuItem *)menuItemAtIndex:(NSUInteger)index;
 
-- (void)expand;
+- (void)open;
 
 - (void)close;
 

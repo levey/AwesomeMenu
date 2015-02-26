@@ -31,8 +31,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 @interface AwesomeMenu ()
-- (void)_expand;
-- (void)_close;
+- (void)_expandAnimation;
+- (void)_closeAnimation;
 - (void)_setMenu;
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p;
 - (CAAnimationGroup *)_shrinkAnimationAtPoint:(CGPoint)p;
@@ -229,7 +229,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     return self.menuItems[index];
 }
 
-- (void)expand
+- (void)open
 {
     if (_isAnimating || [self isExpanded]) {
         return;
@@ -299,7 +299,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     if (!_timer) 
     {
         _flag = [self isExpanded] ? 0 : ([self.menuItems count] - 1);
-        SEL selector = [self isExpanded] ? @selector(_expand) : @selector(_close);
+        SEL selector = [self isExpanded] ? @selector(_expandAnimation) : @selector(_closeAnimation);
 
         // Adding timer to runloop to make sure UI event won't block the timer from firing
         _timer = [NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES];
@@ -310,7 +310,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 #pragma mark - Private methods
 
-- (void)_expand
+- (void)_expandAnimation
 {
 	
     if (_flag == [self.menuItems count])
@@ -358,7 +358,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
 }
 
-- (void)_close
+- (void)_closeAnimation
 {
     if (_flag == -1)
     {
