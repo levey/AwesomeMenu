@@ -42,7 +42,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     NSArray *_menusArray;
     NSUInteger _flag;
     NSTimer *_timer;
-    AwesomeMenuItem *_startButton;
     
     id<AwesomeMenuDelegate> __weak _delegate;
     BOOL _isAnimating;
@@ -54,18 +53,19 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 @synthesize menusArray = _menusArray;
 
 #pragma mark - Initialization & Cleaning up
+
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-	self.nearRadius = kAwesomeMenuDefaultNearRadius;
-	self.endRadius = kAwesomeMenuDefaultEndRadius;
-	self.farRadius = kAwesomeMenuDefaultFarRadius;
-	self.timeOffset = kAwesomeMenuDefaultTimeOffset;
-	self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
-	self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
-	self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
+        self.nearRadius = kAwesomeMenuDefaultNearRadius;
+        self.endRadius = kAwesomeMenuDefaultEndRadius;
+        self.farRadius = kAwesomeMenuDefaultFarRadius;
+        self.timeOffset = kAwesomeMenuDefaultTimeOffset;
+        self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
+        self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
+        self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
@@ -74,10 +74,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.menusArray = aMenusArray;
         
         // assign startItem to "Add" Button.
-        _startButton = startItem;
-        _startButton.delegate = self;
-        _startButton.center = self.startPoint;
-        [self addSubview:_startButton];
+        self.startButton = startItem;
+        self.startButton.delegate = self;
+        self.startButton.center = self.startPoint;
+        [self addSubview:self.startButton];
     }
     return self;
 }
@@ -88,47 +88,48 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)setStartPoint:(CGPoint)aPoint
 {
     startPoint = aPoint;
-    _startButton.center = aPoint;
+    self.startButton.center = aPoint;
 }
 
 #pragma mark - images
 
 - (void)setImage:(UIImage *)image {
-	_startButton.image = image;
+	self.startButton.image = image;
 }
 
 - (UIImage*)image {
-	return _startButton.image;
+	return self.startButton.image;
 }
 
 - (void)setHighlightedImage:(UIImage *)highlightedImage {
-	_startButton.highlightedImage = highlightedImage;
+	self.startButton.highlightedImage = highlightedImage;
 }
 
 - (UIImage*)highlightedImage {
-	return _startButton.highlightedImage;
+	return self.startButton.highlightedImage;
 }
 
 
 - (void)setContentImage:(UIImage *)contentImage {
-	_startButton.contentImageView.image = contentImage;
+	self.startButton.contentImageView.image = contentImage;
 }
 
 - (UIImage*)contentImage {
-	return _startButton.contentImageView.image;
+	return self.startButton.contentImageView.image;
 }
 
 - (void)setHighlightedContentImage:(UIImage *)highlightedContentImage {
-	_startButton.contentImageView.highlightedImage = highlightedContentImage;
+	self.startButton.contentImageView.highlightedImage = highlightedContentImage;
 }
 
 - (UIImage*)highlightedContentImage {
-	return _startButton.contentImageView.highlightedImage;
+	return self.startButton.contentImageView.highlightedImage;
 }
 
 
                                
 #pragma mark - UIView's methods
+
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // if the menu is animating, prevent touches
@@ -144,7 +145,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
     else
     {
-        return CGRectContainsPoint(_startButton.frame, point);
+        return CGRectContainsPoint(self.startButton.frame, point);
     }
 }
 
@@ -154,9 +155,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 #pragma mark - AwesomeMenuItem delegates
+
 - (void)AwesomeMenuItemTouchesBegan:(AwesomeMenuItem *)item
 {
-    if (item == _startButton) 
+    if (item == self.startButton) 
     {
         self.expanding = !self.isExpanding;
     }
@@ -164,7 +166,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item
 {
     // exclude the "add" button
-    if (item == _startButton) 
+    if (item == self.startButton) 
     {
         return;
     }
@@ -190,7 +192,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     // rotate start button
     float angle = self.isExpanding ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:animationDuration animations:^{
-        _startButton.transform = CGAffineTransformMakeRotation(angle);
+        self.startButton.transform = CGAffineTransformMakeRotation(angle);
     }];
     
     if ([_delegate respondsToSelector:@selector(awesomeMenu:didSelectIndex:)])
@@ -199,7 +201,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
 }
 
-#pragma mark - Instant methods
+#pragma mark - Instance methods
+
 - (void)setMenusArray:(NSArray *)aMenusArray
 {	
     if (aMenusArray == _menusArray)
@@ -218,7 +221,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         }
     }
 }
-
 
 - (void)_setMenu {
 	NSUInteger count = [_menusArray count];
@@ -240,7 +242,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
         item.center = item.startPoint;
         item.delegate = self;
-		[self insertSubview:item belowSubview:_startButton];
+		[self insertSubview:item belowSubview:self.startButton];
     }
 }
 
@@ -266,7 +268,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     if (self.rotateAddButton) {
         float angle = self.isExpanding ? -M_PI_4 : 0.0f;
         [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
-            _startButton.transform = CGAffineTransformMakeRotation(angle);
+            self.startButton.transform = CGAffineTransformMakeRotation(angle);
         }];
     }
     
@@ -282,7 +284,9 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         _isAnimating = YES;
     }
 }
+
 #pragma mark - Private methods
+
 - (void)_expand
 {
 	

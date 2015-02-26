@@ -15,6 +15,7 @@
 @interface AwesomeMenu : UIView <AwesomeMenuItemDelegate>
 
 @property (nonatomic, copy) NSArray *menusArray;
+@property (nonatomic, strong) AwesomeMenuItem *startButton;
 @property (nonatomic, getter = isExpanding) BOOL expanding;
 @property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
 
