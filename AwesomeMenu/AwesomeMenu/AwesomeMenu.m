@@ -59,14 +59,13 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-		
-		self.nearRadius = kAwesomeMenuDefaultNearRadius;
-		self.endRadius = kAwesomeMenuDefaultEndRadius;
-		self.farRadius = kAwesomeMenuDefaultFarRadius;
-		self.timeOffset = kAwesomeMenuDefaultTimeOffset;
-		self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
-		self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
-		self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
+	self.nearRadius = kAwesomeMenuDefaultNearRadius;
+	self.endRadius = kAwesomeMenuDefaultEndRadius;
+	self.farRadius = kAwesomeMenuDefaultFarRadius;
+	self.timeOffset = kAwesomeMenuDefaultTimeOffset;
+	self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
+	self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
+	self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
