@@ -45,7 +45,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 @synthesize nearRadius, endRadius, farRadius, timeOffset, rotateAngle, menuWholeAngle, startPoint, expandRotation, closeRotation, animationDuration, rotateAddButton;
-@synthesize expanding = _expanding;
+@synthesize expanded = _expanded;
 
 #pragma mark - Initialization & Cleaning up
 
@@ -138,7 +138,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
     // if the menu state is expanding, everywhere can be touch
     // otherwise, only the add button are can be touch
-    if (YES == _expanding) 
+    if (YES == [self isExpanded])
     {
         return YES;
     }
@@ -150,7 +150,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.expanding = !self.isExpanding;
+    self.expanded = ![self isExpanded];
 }
 
 #pragma mark - AwesomeMenuItem delegates
@@ -159,7 +159,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     if (item == self.startButton) 
     {
-        self.expanding = !self.isExpanding;
+        self.expanded = ![self isExpanded];
     }
 }
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item
@@ -186,10 +186,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
         otherItem.center = otherItem.startPoint;
     }
-    _expanding = NO;
+    _expanded = NO;
     
     // rotate start button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+    float angle = [self isExpanded] ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:animationDuration animations:^{
         self.startButton.transform = CGAffineTransformMakeRotation(angle);
     }];
@@ -229,6 +229,22 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     return self.menuItems[index];
 }
 
+- (void)expand
+{
+    if (_isAnimating || [self isExpanded]) {
+        return;
+    }
+    [self setExpanded:YES];
+}
+
+- (void)close
+{
+    if (_isAnimating || ![self isExpanded]) {
+        return;
+    }
+    [self setExpanded:NO];
+}
+
 - (void)_setMenu {
 	NSUInteger count = [self.menuItems count];
     for (int i = 0; i < count; i ++)
@@ -253,27 +269,27 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
 }
 
-- (BOOL)isExpanding
+- (BOOL)isExpanded
 {
-    return _expanding;
+    return _expanded;
 }
-- (void)setExpanding:(BOOL)expanding
+- (void)setExpanded:(BOOL)expanded
 {
-	if (expanding) {
+	if (expanded) {
 		[self _setMenu];
         if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateOpen:)]){
             [self.delegate awesomeMenuWillAnimateOpen:self];
         }
 	}
 	
-    _expanding = expanding;
+    _expanded = expanded;
     if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuWillAnimateClose:)]){
         [self.delegate awesomeMenuWillAnimateClose:self];
     }
 
     // rotate add button
     if (self.rotateAddButton) {
-        float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+        float angle = [self isExpanded] ? -M_PI_4 : 0.0f;
         [UIView animateWithDuration:kAwesomeMenuStartMenuDefaultAnimationDuration animations:^{
             self.startButton.transform = CGAffineTransformMakeRotation(angle);
         }];
@@ -282,8 +298,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     // expand or close animation
     if (!_timer) 
     {
-        _flag = self.isExpanding ? 0 : ([self.menuItems count] - 1);
-        SEL selector = self.isExpanding ? @selector(_expand) : @selector(_close);
+        _flag = [self isExpanded] ? 0 : ([self.menuItems count] - 1);
+        SEL selector = [self isExpanded] ? @selector(_expand) : @selector(_close);
 
         // Adding timer to runloop to make sure UI event won't block the timer from firing
         _timer = [NSTimer timerWithTimeInterval:timeOffset target:self selector:selector userInfo:nil repeats:YES];

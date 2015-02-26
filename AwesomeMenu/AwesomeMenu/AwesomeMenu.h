@@ -16,7 +16,7 @@
 @property (nonatomic, copy) NSArray *menuItems;
 @property (nonatomic, strong) AwesomeMenuItem *startButton;
 
-@property (nonatomic, getter = isExpanding) BOOL expanding;
+@property (nonatomic, getter = isExpanded) BOOL expanded;
 @property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
 
 @property (nonatomic, strong) UIImage *image;
@@ -41,6 +41,10 @@
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem optionMenus:(NSArray *)aMenusArray DEPRECATED_MSG_ATTRIBUTE("use -initWithFrame:startItem:menuItems: instead.");
 
 - (AwesomeMenuItem *)menuItemAtIndex:(NSUInteger)index;
+
+- (void)expand;
+
+- (void)close;
 
 @end
 
