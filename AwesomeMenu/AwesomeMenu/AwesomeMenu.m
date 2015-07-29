@@ -194,6 +194,10 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     float angle = [self isExpanded] ? self.addRotation : 0.0f;
     [UIView animateWithDuration:animationDuration animations:^{
         self.startButton.transform = CGAffineTransformMakeRotation(angle);
+    } completion:^(BOOL finished) {
+        if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuDidFinishAnimationClose:)]){
+            [self.delegate awesomeMenuDidFinishAnimationClose:self];
+        }
     }];
 
     if ([_delegate respondsToSelector:@selector(awesomeMenu:didSelectIndex:)])
