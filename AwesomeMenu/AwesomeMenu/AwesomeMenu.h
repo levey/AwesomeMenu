@@ -17,7 +17,7 @@
 @property (nonatomic, strong) AwesomeMenuItem *startButton;
 
 @property (nonatomic, getter = isExpanded) BOOL expanded;
-@property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
+@property (nonatomic, assign) id<AwesomeMenuDelegate> delegate;
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *highlightedImage;
@@ -35,6 +35,7 @@
 @property (nonatomic, assign) CGFloat closeRotation;
 @property (nonatomic, assign) CGFloat animationDuration;
 @property (nonatomic, assign) BOOL    rotateAddButton;
+@property (nonatomic, assign) CGFloat addRotation;
 
 - (id)initWithFrame:(CGRect)frame startItem:(AwesomeMenuItem*)startItem menuItems:(NSArray *)menuItems;
 
