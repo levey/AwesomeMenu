@@ -6,6 +6,8 @@ AwesomeMenu is a menu with the same look as the story menu of [Path](https://pat
 
 ---
 
+![demo](https://github.com/brennanMKE/AwesomeMenu/raw/master/AwesomeMenu.gif)
+
 **How To**:
 
 
@@ -70,6 +72,3 @@ Sina Weibo: [@LeveyZhu](http://weibo.com/leveyzhu)
 Thanks for [pashields](https://github.com/pashields) providing the [youtube demo](http://www.youtube.com/watch?v=vddaYMtETjo) :)
 
 Thanks for [acoomans](https://github.com/acoomans/QuadCurveMenu) for the options.
-
-
-![screenshots](http://k.minus.com/ib1kHc4lnLB8bd.gif) ![screenshots](http://k.minus.com/iovTFVTQQ192K.gif) ![screenshots](http://k.minus.com/i4BrO2tfCJxzk.gif)
