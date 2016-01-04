@@ -72,7 +72,8 @@
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem menuItems:menuItems];
     menu.delegate = self;
     
-    
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = menu;
 
     /* Path-like customization
 
@@ -116,7 +117,8 @@
      
      */
     
-    [self.window addSubview:menu];
+//    [self.window addSubview:menu];
+    [self.window setRootViewController:vc];
     [self.window makeKeyAndVisible];
     return YES;
 }
