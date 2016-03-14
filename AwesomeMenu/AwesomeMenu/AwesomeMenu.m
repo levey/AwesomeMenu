@@ -7,13 +7,9 @@
 //
 
 #import "AwesomeMenu.h"
-#import <QuartzCore/QuartzCore.h>
 
-static CGFloat const kAwesomeMenuDefaultNearRadius = 110.0f;
-static CGFloat const kAwesomeMenuDefaultEndRadius = 120.0f;
-static CGFloat const kAwesomeMenuDefaultFarRadius = 140.0f;
-static CGFloat const kAwesomeMenuDefaultStartPointX = 160.0;
-static CGFloat const kAwesomeMenuDefaultStartPointY = 240.0;
+@import QuartzCore;
+
 static CGFloat const kAwesomeMenuDefaultTimeOffset = 0.036f;
 static CGFloat const kAwesomeMenuDefaultRotateAngle = 0.0;
 static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI * 2;
@@ -53,14 +49,17 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGFloat width = CGRectGetWidth(frame);
+        CGFloat height = CGRectGetHeight(frame);
+        
         self.backgroundColor = [UIColor clearColor];
-        self.nearRadius = kAwesomeMenuDefaultNearRadius;
-        self.endRadius = kAwesomeMenuDefaultEndRadius;
-        self.farRadius = kAwesomeMenuDefaultFarRadius;
+        self.nearRadius = width * 0.3;
+        self.endRadius = width * 0.4;
+        self.farRadius = width * 0.5;
         self.timeOffset = kAwesomeMenuDefaultTimeOffset;
         self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
         self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
-        self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
+        self.startPoint = CGPointMake(width / 2.0, height / 2.0);
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
@@ -92,41 +91,46 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 #pragma mark - Images
 
-- (void)setImage:(UIImage *)image {
+- (void)setImage:(UIImage *)image
+{
 	self.startButton.image = image;
 }
 
-- (UIImage*)image {
+- (UIImage*)image
+{
 	return self.startButton.image;
 }
 
-- (void)setHighlightedImage:(UIImage *)highlightedImage {
+- (void)setHighlightedImage:(UIImage *)highlightedImage
+{
 	self.startButton.highlightedImage = highlightedImage;
 }
 
-- (UIImage*)highlightedImage {
+- (UIImage*)highlightedImage
+{
 	return self.startButton.highlightedImage;
 }
 
-
-- (void)setContentImage:(UIImage *)contentImage {
+- (void)setContentImage:(UIImage *)contentImage
+{
 	self.startButton.contentImageView.image = contentImage;
 }
 
-- (UIImage*)contentImage {
+- (UIImage*)contentImage
+{
 	return self.startButton.contentImageView.image;
 }
 
-- (void)setHighlightedContentImage:(UIImage *)highlightedContentImage {
+- (void)setHighlightedContentImage:(UIImage *)highlightedContentImage
+{
 	self.startButton.contentImageView.highlightedImage = highlightedContentImage;
 }
 
-- (UIImage*)highlightedContentImage {
+- (UIImage*)highlightedContentImage
+{
 	return self.startButton.contentImageView.highlightedImage;
 }
 
-
-                               
 #pragma mark - UIView's methods
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
@@ -162,6 +166,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.expanded = ![self isExpanded];
     }
 }
+
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item
 {
     // exclude the "add" button
@@ -245,7 +250,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     [self setExpanded:NO];
 }
 
-- (void)_setMenu {
+- (void)_setMenu
+{
 	NSUInteger count = [self.menuItems count];
     for (int i = 0; i < count; i ++)
     {
@@ -273,6 +279,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     return _expanded;
 }
+
 - (void)setExpanded:(BOOL)expanded
 {
     if (expanded) {
@@ -404,7 +411,9 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
     _flag --;
 }
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
     if([[anim valueForKey:@"id"] isEqual:@"lastAnimation"]) {
         if(self.delegate && [self.delegate respondsToSelector:@selector(awesomeMenuDidFinishAnimationClose:)]){
             [self.delegate awesomeMenuDidFinishAnimationClose:self];
@@ -416,6 +425,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         }
     }
 }
+
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -455,6 +465,5 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     return animationgroup;
 }
-
 
 @end
