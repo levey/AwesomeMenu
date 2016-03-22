@@ -28,46 +28,56 @@
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage 
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
+    
     AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage 
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
-                                                                   ContentImage:starImage 
-                                                        highlightedContentImage:nil];
+                                                                   ContentImage:starImage
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage 
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem6 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem7 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem8 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     AwesomeMenuItem *starMenuItem9 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                                highlightedImage:storyMenuItemImagePressed 
                                                                    ContentImage:starImage
-                                                        highlightedContentImage:nil];
+                                                        highlightedContentImage:nil
+                                                                   itemSize:CGSizeMake(50.0, 50.0)];
     
     NSArray *menuItems = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, starMenuItem6, starMenuItem7,starMenuItem8,starMenuItem9, nil];
     
     AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
                                                        highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
                                                            ContentImage:[UIImage imageNamed:@"icon-plus.png"]
-                                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+                                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]itemSize:CGSizeMake(50.0, 50.0)];
     
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds startItem:startItem menuItems:menuItems];
     menu.delegate = self;
@@ -116,7 +126,9 @@
      
      */
     
-    [self.window addSubview:menu];
+    UIViewController *rootVC = [[UIViewController alloc] init];
+    [rootVC.view addSubview:menu];
+    self.window.rootViewController = rootVC;
     [self.window makeKeyAndVisible];
     return YES;
 }
