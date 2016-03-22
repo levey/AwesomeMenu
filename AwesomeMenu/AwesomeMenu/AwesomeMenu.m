@@ -12,8 +12,6 @@
 static CGFloat const kAwesomeMenuDefaultNearRadius = 110.0f;
 static CGFloat const kAwesomeMenuDefaultEndRadius = 120.0f;
 static CGFloat const kAwesomeMenuDefaultFarRadius = 140.0f;
-static CGFloat const kAwesomeMenuDefaultStartPointX = 160.0;
-static CGFloat const kAwesomeMenuDefaultStartPointY = 240.0;
 static CGFloat const kAwesomeMenuDefaultTimeOffset = 0.036f;
 static CGFloat const kAwesomeMenuDefaultRotateAngle = 0.0;
 static CGFloat const kAwesomeMenuDefaultMenuWholeAngle = M_PI * 2;
@@ -60,7 +58,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.timeOffset = kAwesomeMenuDefaultTimeOffset;
         self.rotateAngle = kAwesomeMenuDefaultRotateAngle;
         self.menuWholeAngle = kAwesomeMenuDefaultMenuWholeAngle;
-        self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
+        self.startPoint = self.center;
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
@@ -131,6 +129,11 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
+    //detect touch only inside own frame bounds
+    if (!CGRectContainsPoint(self.bounds, point))
+    {
+        return NO;
+    }
     // if the menu is animating, prevent touches
     if (_isAnimating) 
     {

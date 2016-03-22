@@ -9,6 +9,9 @@
 #import "AwesomeMenuItem.h"
 static inline CGRect ScaleRect(CGRect rect, float n) {return CGRectMake((rect.size.width - rect.size.width * n)/ 2, (rect.size.height - rect.size.height * n) / 2, rect.size.width * n, rect.size.height * n);}
 @implementation AwesomeMenuItem
+{
+    CGSize _itemSize;
+}
 
 @synthesize contentImageView = _contentImageView;
 
@@ -19,14 +22,16 @@ static inline CGRect ScaleRect(CGRect rect, float n) {return CGRectMake((rect.si
 @synthesize delegate  = _delegate;
 
 #pragma mark - initialization & cleaning up
-- (id)initWithImage:(UIImage *)img 
+- (id)initWithImage:(UIImage *)img
    highlightedImage:(UIImage *)himg
        ContentImage:(UIImage *)cimg
-highlightedContentImage:(UIImage *)hcimg;
+highlightedContentImage:(UIImage *)hcimg
+           itemSize:(CGSize)itemSize
 {
-    if (self = [super init]) 
+    if (self = [super init])
     {
         self.image = img;
+        _itemSize = itemSize;
         self.highlightedImage = himg;
         self.userInteractionEnabled = YES;
         _contentImageView = [[UIImageView alloc] initWithImage:cimg];
@@ -41,7 +46,7 @@ highlightedContentImage:(UIImage *)hcimg;
 {
     [super layoutSubviews];
     
-    self.bounds = CGRectMake(0, 0, self.image.size.width, self.image.size.height);
+    self.bounds = CGRectMake(0, 0, _itemSize.width, _itemSize.height);
     
     float width = _contentImageView.image.size.width;
     float height = _contentImageView.image.size.height;
