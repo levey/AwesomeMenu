@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AwesomeMenu.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate, AwesomeMenuDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

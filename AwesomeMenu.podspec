@@ -6,6 +6,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'https://github.com/levey/AwesomeMenu'
   spec.author       = 'Levey Zhu'
   spec.source       = { :git => 'git@github.com:levey/AwesomeMenu.git', :tag => '2.0.0'}
-  spec.source_files = '/AwesomeMenu/AwesomeMenu/*'
+  spec.source_files = 'AwesomeMenu/AwesomeMenu/*'
   spec.requires_arc = true
+  spec.platform     = :ios, '7.0'
 end
