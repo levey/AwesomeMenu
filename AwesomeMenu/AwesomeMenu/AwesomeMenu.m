@@ -173,6 +173,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     CAAnimationGroup *blowup = [self _blowupAnimationAtPoint:item.center];
     [item.layer addAnimation:blowup forKey:@"blowup"];
     item.center = item.startPoint;
+    item.hidden = YES;
     
     // shrink other menu buttons
     for (int i = 0; i < [self.menuItems count]; i ++)
@@ -185,6 +186,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         [otherItem.layer addAnimation:shrink forKey:@"shrink"];
 
         otherItem.center = otherItem.startPoint;
+        otherItem.hidden = YES;
     }
     _expanded = NO;
     
@@ -264,6 +266,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf(i * menuWholeAngle / (count - 1)), startPoint.y - farRadius * cosf(i * menuWholeAngle / (count - 1)));
         item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
         item.center = item.startPoint;
+        item.hidden = YES;
         item.delegate = self;
 		[self insertSubview:item belowSubview:self.startButton];
     }
@@ -342,8 +345,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     positionAnimation.path = path;
     CGPathRelease(path);
     
+    CAKeyframeAnimation *hideAnimation = [CAKeyframeAnimation animationWithKeyPath:@"hidden"];
+    hideAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO], nil];
+    hideAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f], [NSNumber numberWithBool:0.1f], nil];
+    
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
-    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
+    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, hideAnimation, nil];
     animationgroup.duration = animationDuration;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -354,6 +361,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     [item.layer addAnimation:animationgroup forKey:@"Expand"];
     item.center = item.endPoint;
+    item.hidden = NO;
     
     _flag ++;
     
@@ -389,8 +397,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     positionAnimation.path = path;
     CGPathRelease(path);
     
+    CAKeyframeAnimation *hideAnimation = [CAKeyframeAnimation animationWithKeyPath:@"hidden"];
+    hideAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES], nil];
+    hideAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.9f], [NSNumber numberWithBool:1.0f], nil];
+    
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
-    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
+    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, hideAnimation, nil];
     animationgroup.duration = animationDuration;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
@@ -401,6 +413,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
+    item.hidden = YES;
 
     _flag --;
 }
@@ -428,8 +441,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.toValue  = [NSNumber numberWithFloat:0.0f];
     
+    CAKeyframeAnimation *hideAnimation = [CAKeyframeAnimation animationWithKeyPath:@"hidden"];
+    hideAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES], nil];
+    hideAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.9f], [NSNumber numberWithBool:1.0f], nil];
+    
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
-    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
+    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, hideAnimation, nil];
     animationgroup.duration = animationDuration;
     animationgroup.fillMode = kCAFillModeForwards;
 
@@ -448,8 +465,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.toValue  = [NSNumber numberWithFloat:0.0f];
     
+    CAKeyframeAnimation *hideAnimation = [CAKeyframeAnimation animationWithKeyPath:@"hidden"];
+    hideAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:YES], nil];
+    hideAnimation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.9f], [NSNumber numberWithBool:1.0f], nil];
+    
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
-    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
+    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, hideAnimation, nil];
     animationgroup.duration = animationDuration;
     animationgroup.fillMode = kCAFillModeForwards;
     
