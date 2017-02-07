@@ -108,9 +108,10 @@
     menu.delegate = self;
     
 	menu.menuWholeAngle = M_PI_2;
-	menu.farRadius = 110.0f;
-	menu.endRadius = 100.0f;
-	menu.nearRadius = 90.0f;
+    menu.menuWholeIsLine = YES;
+	menu.farRadius = 210.0f;
+	menu.endRadius = 200.0f;
+	menu.nearRadius = 190.0f;
     menu.animationDuration = 0.3f;
     menu.startPoint = CGPointMake(50.0, 410.0);
      
