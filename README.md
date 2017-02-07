@@ -6,6 +6,12 @@ AwesomeMenu is a menu with the same look as the story menu of [Path](https://pat
 
 ---
 
+### Installation with CocoaPods
+#### Podfile
+
+```ruby
+pod 'AwesomeMenu', '~> 1.0.0'
+```
 **How To**:
 
 
