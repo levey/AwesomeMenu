@@ -138,19 +138,16 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     }
     // if the menu state is expanding, everywhere can be touch
     // otherwise, only the add button are can be touch
-    if (YES == [self isExpanded])
-    {
-        return YES;
-    }
-    else
-    {
-        return CGRectContainsPoint(self.startButton.frame, point);
-    }
+    
+    return YES;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.expanded = ![self isExpanded];
+    if (self.isExpanded){
+    
+        self.expanded = NO;
+    }
 }
 
 #pragma mark - AwesomeMenuItem delegates
