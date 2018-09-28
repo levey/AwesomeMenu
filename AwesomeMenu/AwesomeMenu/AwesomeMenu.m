@@ -342,12 +342,18 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     positionAnimation.path = path;
     CGPathRelease(path);
     
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnimation.toValue  = [NSNumber numberWithFloat:1.0f];
+    opacityAnimation.fillMode = kCAFillModeForwards;
+    
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
-    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
+    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, opacityAnimation, nil];
     animationgroup.duration = animationDuration;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.removedOnCompletion = NO;
     animationgroup.delegate = self;
+
     if(_flag == [self.menuItems count] - 1){
         [animationgroup setValue:@"firstAnimation" forKey:@"id"];
     }
@@ -388,12 +394,17 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     CGPathAddLineToPoint(path, NULL, item.startPoint.x, item.startPoint.y); 
     positionAnimation.path = path;
     CGPathRelease(path);
+
+    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnimation.toValue  = [NSNumber numberWithFloat:0.0f];
+    opacityAnimation.fillMode = kCAFillModeForwards;
     
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
-    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
+    animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, opacityAnimation, nil];
     animationgroup.duration = animationDuration;
     animationgroup.fillMode = kCAFillModeForwards;
     animationgroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animationgroup.removedOnCompletion = NO;
     animationgroup.delegate = self;
     if(_flag == 0){
         [animationgroup setValue:@"lastAnimation" forKey:@"id"];
